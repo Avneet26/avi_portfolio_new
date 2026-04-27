@@ -87,7 +87,7 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
     interface Dot { lng: number; lat: number }
     const allDots: Dot[] = []
     let landFeatures: any = null
-    const rotation = [0, 0]
+    const rotation: [number, number] = [0, 0]
 
     const render = () => {
       ctx.clearRect(0, 0, w, h)
