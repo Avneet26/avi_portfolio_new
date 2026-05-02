@@ -175,7 +175,7 @@ export default function Hero() {
 
         {/* Bottom rail */}
         <div
-          className="mt-6 lg:mt-8 xl:mt-10 flex items-center justify-between gap-6 border-t pt-3 xl:pt-4 font-mono text-[10px] xl:text-[11px] uppercase tracking-[0.22em]"
+          className="mt-6 lg:mt-8 xl:mt-10 flex items-center justify-between gap-6 pt-3 xl:pt-4 font-mono text-[10px] xl:text-[11px] uppercase tracking-[0.22em]"
           style={{ borderColor: "var(--color-ink)" }}
         >
           <div className="flex items-center gap-3">

@@ -41,9 +41,9 @@ export default function FreelanceJourney() {
               <div className="font-mono text-[11px] uppercase tracking-widest opacity-70">// Stats</div>
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {[
-                  { k: "Clients", v: "12+" },
-                  { k: "Sectors", v: "06" },
-                  { k: "Continents", v: "03" },
+                  { k: "Clients", v: "5+" },
+                  { k: "Sectors", v: "03" },
+                  { k: "Continents", v: "02" },
                 ].map((s) => (
                   <div key={s.k}>
                     <div className="font-display text-3xl">{s.v}</div>

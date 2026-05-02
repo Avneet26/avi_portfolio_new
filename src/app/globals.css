@@ -282,4 +282,66 @@
   }
   .glitch:hover::before { opacity: 0.7; color: var(--color-orange-500); transform: translate(2px, -1px); }
   .glitch:hover::after  { opacity: 0.7; color: var(--color-cyan-500);   transform: translate(-2px, 1px); }
+
+  /* Tech stack cards — snappy cyberpunk hover */
+  .tech-card {
+    transition: transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                border-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                background-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+  }
+  .tech-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-cyan-500);
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 3px 3px 0 0 rgba(14, 22, 32, 0.12),
+                0 0 0 1px rgba(88, 174, 195, 0.4);
+  }
+  .tech-card .tech-corner,
+  .tech-card .tech-corner-br {
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .tech-card:hover .tech-corner,
+  .tech-card:hover .tech-corner-br {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .tech-card .tech-logo {
+    transition: transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .tech-card:hover .tech-logo {
+    transform: scale(1.08) rotate(-3deg);
+  }
+  .tech-card .tech-scan::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: -40%;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, rgba(88, 174, 195, 0.18), transparent);
+    transform: skewX(-20deg);
+    opacity: 0;
+  }
+  .tech-card:hover .tech-scan::after {
+    opacity: 1;
+    animation: tech-scan-sweep 600ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  @keyframes tech-scan-sweep {
+    from { left: -40%; }
+    to   { left: 130%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech-card,
+    .tech-card .tech-logo,
+    .tech-card .tech-corner,
+    .tech-card .tech-corner-br { transition: none; }
+    .tech-card:hover { transform: none; }
+    .tech-card:hover .tech-logo { transform: none; }
+    .tech-card .tech-scan::after { display: none; }
+  }
 }
