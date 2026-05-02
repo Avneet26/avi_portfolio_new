@@ -5,67 +5,87 @@ export const profile = {
   role: "Senior Frontend Engineer",
   company: "OptiPhoenix",
   yearsExperience: "4+",
-  location: "India · Remote",
+  location: "New Delhi · India",
   email: "avneetvirdi26@gmail.com",
   socials: {
     github: "https://github.com/",
     linkedin: "https://linkedin.com/in/",
     twitter: "https://twitter.com/",
   },
-  tagline: "Obsessed with the gap between good-looking and great-feeling — design systems, motion, and the last 5% that ships.",
+  tagline: "Senior Frontend Engineer specialising in CRO, A/B testing, and UI that actually converts. Based in Delhi — shipping since 2021.",
 } as const;
 
-export const lorem = {
-  short:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu velit a tortor pretium.",
-  medium:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et lectus sed nibh imperdiet vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-  long: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et lectus sed nibh imperdiet vehicula. Pellentesque habitant morbi tristique. Quisque pretium, ipsum vitae malesuada efficitur, augue mauris facilisis lacus, eu pretium tortor velit non magna. Curabitur consequat, ipsum nec ornare imperdiet, sapien lacus pulvinar tortor.",
-};
+export const about = {
+  intro:
+    "B.Tech in IT, self-taught the MERN stack, first job at BizData in PHP and MySQL. Since 2021: junior to senior at OptiPhoenix, a PG Diploma in Toronto, freelancing across Ontario, and now back in Delhi leading the frontend team.",
+  expertise:
+    "Four years in CRO — experiment builds across ABTasty, Optimizely, Convert, and VWO. Shipped for Accor Hotels, Fairmont, Microsoft, Xbox, and Euronics. Also built an inventory system on PowerApps at RPS Composites in Canada.",
+  agentic:
+    "Currently leading a team of 5 devs and 4 QA, owning client calls, and running the data pipeline for CRO experiments. Rolling out AI workflows and agentic coding practices across the team.",
+  gamedev:
+    "Dev logs incoming — AI-native workflows, CRO experiment teardowns, and building in public. Dropping soon.",
+  personal:
+    "Gaming and music outside of work. Travel is on pause for now. The Weeknd in Toronto was a highlight. Trying to go to the gym every week, failing most weeks, but the intention is still there.",
+} as const;
 
 export const experience = [
   {
     company: "OptiPhoenix",
     role: "Senior Frontend Engineer",
-    period: "2023 — Present",
-    location: "Remote",
+    period: "2025 — Present",
+    location: "New Delhi · India",
     bullets: [
-      "Lead frontend architecture decisions across 4 product surfaces.",
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit phasellus.",
+      "Rejoined as Senior FE — now leading a team of 5–6 developers and 3–4 QA engineers alongside the PM, running sprint planning, timelines, and estimations.",
+      "Owns client calls directly and manages delivery expectations — a real step up from just shipping code.",
+      "Leading the Data Collection & Analysis initiative: designed and built the pipeline that aggregates CRO A/B test data from multiple sources into a clean, queryable format the whole CRO team uses to plan their next experiments.",
+      "Driving AI integration across the team — rolling out agentic coding workflows, custom Claude Code prompt frameworks, and AI-assisted dev practices to cut build time and increase quality.",
     ],
-    stack: ["React", "Next.js", "TypeScript", "Tailwind", "Node.js"],
+    stack: ["React", "TypeScript", "jQuery", "ABTasty", "Optimizely", "Convert", "Claude Code"],
   },
   {
-    company: "Lorem Studio",
-    role: "Frontend Engineer",
-    period: "2021 — 2023",
-    location: "Lorem, IN",
+    company: "RPS Composites",
+    role: "Full Stack Developer",
+    period: "2024 — 2025",
+    location: "Maple · Ontario · Canada",
     bullets: [
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit phasellus.",
+      "8-month contract at a major plastic parts manufacturing company — my first proper western corporate experience.",
+      "Built an inventory management system from scratch on Microsoft PowerApps, wiring it into their existing Excel-based databases.",
+      "Replaced manual tracking for an entire manufacturing operation — shipped something that genuinely made a difference for a team that had been doing it the hard way for years.",
     ],
-    stack: ["React", "TypeScript", "GraphQL", "Storybook"],
+    stack: ["Microsoft PowerApps", "Power Query", "Excel", "Azure"],
   },
   {
-    company: "Lorem Labs",
+    company: "OptiPhoenix",
     role: "Junior Frontend Developer",
-    period: "2020 — 2021",
-    location: "Lorem, IN",
+    period: "2021 — 2023",
+    location: "New Delhi · India",
     bullets: [
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit phasellus.",
+      "Joined as a junior A/B test developer — built and shipped UI components across client websites for a CRO agency.",
+      "Worked on experiments for major hotel chains (Accor Hotels, Fairmont), tech giants (Microsoft, Xbox, Minecraft), and e-commerce brands (Euronics and others across Europe and North America).",
+      "Grew from executing tickets to understanding the full experiment lifecycle: build, QA, instrument, and analyse.",
     ],
-    stack: ["JavaScript", "Vue", "SCSS"],
+    stack: ["jQuery", "JavaScript", "HTML", "CSS", "ABTasty", "Optimizely", "Convert", "VWO"],
+  },
+  {
+    company: "BizData",
+    role: "Full Stack Developer Intern",
+    period: "2021 · 5 months",
+    location: "New Delhi · India",
+    bullets: [
+      "First job out of B.Tech via campus placement — built form survey collection websites for their data integration servers.",
+      "Full stack from day one: PHP, HTML, CSS, JavaScript, MySQL on the backend, and Linux server setup for deployment.",
+      "No senior to hold your hand, no safety net. Learned fast.",
+    ],
+    stack: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "Linux"],
   },
 ];
 
 export const freelance = [
-  { client: "Lorem Co.",      year: "2024", scope: "Marketing site",    note: "Lorem ipsum dolor sit." },
-  { client: "Ipsum Brand",    year: "2023", scope: "Design system",     note: "Lorem ipsum dolor sit amet." },
-  { client: "Dolor Studio",   year: "2023", scope: "E-commerce front",  note: "Lorem ipsum dolor." },
-  { client: "Sit Amet Inc.",  year: "2022", scope: "Dashboard MVP",     note: "Lorem ipsum dolor sit amet consectetur." },
-  { client: "Consectetur LLC",year: "2021", scope: "Landing pages",     note: "Lorem ipsum dolor sit." },
+  { client: "Tossit Pizza",         year: "2024", scope: "Website + SEO",     note: "DeeGee Graphics · Ontario GTA" },
+  { client: "Active Coachlines",    year: "2024", scope: "Website + SEO",     note: "DeeGee Graphics · Ontario GTA" },
+  { client: "Blends & Bites",       year: "2024", scope: "Website + Branding", note: "DeeGee Graphics · Restaurant" },
+  { client: "Golden Hours Bistro",  year: "2025", scope: "Website + SEO",     note: "DeeGee Graphics · Elmvale + Barrie" },
+  { client: "Blue Bagels",          year: "2024", scope: "CRO / Frontend",    note: "French CRO agency · A/B builds" },
 ];
 
 export const projects = [
@@ -101,15 +121,15 @@ export const projects = [
 
 export const education = [
   {
-    school: "Lorem Institute of Technology",
-    degree: "B.Tech, Computer Science",
-    period: "2016 — 2020",
-    note: "Lorem ipsum dolor sit amet consectetur adipiscing elit phasellus.",
+    school: "Humber Polytechnic · Toronto, Canada",
+    degree: "PG Diploma — IT Solutions",
+    period: "2024 — 2025",
+    note: "Two years in Toronto — got a solid taste of everything from databases to iOS/Android, but my specialisation was in ML and full-stack web development. Freelanced and worked in parallel the whole time, because rent in Canada doesn't negotiate.",
   },
   {
-    school: "Ipsum Senior Secondary",
-    degree: "12th — Science",
-    period: "2014 — 2016",
-    note: "Lorem ipsum dolor sit amet.",
+    school: "Guru Teg Bahadur Institute of Technology · IP University · New Delhi",
+    degree: "B.Tech — Information Technology",
+    period: "2017 — 2021",
+    note: "Four years of B.Tech in IT. The classroom gave me Java and computer science fundamentals; the late nights gave me the MERN stack and the skills that actually got me hired. Also had a head start — HTML and C++ from high school.",
   },
 ];

@@ -10,13 +10,13 @@ export default function Experience() {
             <div className="font-mono text-xs uppercase tracking-[0.25em] mb-3 opacity-70">03 / Career Log</div>
             <BlockHeading as="h2" size="lg">Experience<span className="text-cyan-500">.</span></BlockHeading>
           </div>
-          <div className="font-mono text-xs uppercase opacity-70">{experience.length} roles · 2020 → present</div>
+          <div className="font-mono text-xs uppercase opacity-70">{experience.length} roles · 2021 → present</div>
         </div>
 
         <ol className="relative grid gap-4">
           {experience.map((e, i) => (
             <li
-              key={e.company}
+              key={`${e.company}-${e.period}`}
               className="grid grid-cols-1 md:grid-cols-12 gap-4 border-2 border-ink p-5 lg:p-7 bg-paper hover:bg-cyan-100/30 transition-colors"
             >
               <div className="md:col-span-3 font-mono text-xs uppercase tracking-widest">
