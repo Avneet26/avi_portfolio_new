@@ -170,9 +170,9 @@ export default function About() {
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-20 lg:py-28">
         {/* Section label */}
         <motion.div
-          className="font-mono text-xs uppercase tracking-[0.25em] mb-10 opacity-70 flex items-center gap-3"
+          className="font-mono text-[13px] uppercase tracking-[0.18em] mb-10 text-ink-soft font-semibold flex items-center gap-3"
           initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 0.7, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.4, ease }}
         >
@@ -214,39 +214,39 @@ export default function About() {
             {/* Bio paragraphs */}
             <div className="mt-8 space-y-5 max-w-xl">
               {[about.intro, about.expertise, about.agentic, about.personal].map((para, i) => (
-                <motion.p key={i} variants={item} className="text-ink-soft leading-[1.75] text-sm xl:text-base">
+                <motion.p key={i} variants={item} className="text-ink-soft leading-[1.7] text-[15px] xl:text-[16.5px]">
                   {para}
                 </motion.p>
               ))}
             </div>
 
             {/* Coming soon callout */}
-            <motion.div variants={item} className="mt-6 border-l-2 pl-4 py-1" style={{ borderColor: "#f97316" }}>
-              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-orange-500 mb-1">// Coming soon</div>
-              <p className="text-ink text-[0.7rem] font-display font-black uppercase leading-snug">{about.gamedev}</p>
+            <motion.div variants={item} className="mt-6 border-l-2 pl-4 py-1.5" style={{ borderColor: "#f97316" }}>
+              <div className="font-mono text-[12px] uppercase tracking-[0.16em] text-orange-500 mb-1.5 font-semibold">// Coming soon</div>
+              <p className="text-ink text-[14.5px] leading-[1.6]">{about.gamedev}</p>
             </motion.div>
 
             {/* Tech stack cards */}
             <motion.div variants={item} className="mt-8 border-t pt-5" style={{ borderColor: "var(--color-ink)" }}>
-              <div className="font-mono text-[10px] uppercase tracking-[0.25em] opacity-60 mb-3 flex items-center gap-2">
+              <div className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-soft font-semibold mb-3 flex items-center gap-2">
                 <span>// Stack — comfortable in</span>
-                <span className="flex-1 h-px bg-ink/15" />
-                <span className="opacity-60">10 / 10</span>
+                <span className="flex-1 h-px bg-ink/20" />
+                <span className="opacity-70">10 / 10</span>
               </div>
               <TechStack />
             </motion.div>
 
             {/* A/B tools strip */}
             <motion.div variants={item} className="mt-5">
-              <div className="font-mono text-[10px] uppercase tracking-[0.25em] opacity-60 mb-3">// A/B testing platforms</div>
-              <div className="flex flex-wrap gap-2 font-mono text-xs">
+              <div className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-soft font-semibold mb-3">// A/B testing platforms</div>
+              <div className="flex flex-wrap gap-2 font-mono text-[12.5px] uppercase tracking-[0.06em]">
                 {abTools.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-1 border flex items-center gap-1.5"
-                    style={{ borderColor: "rgba(249,115,22,0.5)" }}
+                    className="px-2.5 py-1 border flex items-center gap-1.5 text-ink"
+                    style={{ borderColor: "rgba(249,115,22,0.7)" }}
                   >
-                    <span className="inline-block h-1 w-1 rotate-45 bg-orange-500 opacity-80" />
+                    <span className="inline-block h-1 w-1 rotate-45 bg-orange-500" />
                     {t}
                   </span>
                 ))}
@@ -269,14 +269,14 @@ export default function About() {
                   className="border p-4 hover:bg-cyan-50/60 transition-colors backdrop-blur-md bg-white/55"
                   style={{ borderColor: "var(--color-ink)" }}
                 >
-                  <div className="font-mono text-[10px] opacity-60 uppercase tracking-widest">{s.k}</div>
+                  <div className="font-mono text-[11.5px] text-ink-soft uppercase tracking-[0.12em] font-semibold">{s.k}</div>
                   <div className="mt-1 font-display text-2xl text-ink">{s.v}</div>
                 </div>
               ))}
             </motion.div>
 
             <motion.div variants={item} className="mt-6 border p-5 backdrop-blur-md bg-white/55" style={{ borderColor: "var(--color-ink)" }}>
-              <div className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-60 mb-3">// Specialisation</div>
+              <div className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-soft font-semibold mb-4">// Specialisation</div>
               <div className="space-y-3">
                 {[
                   { label: "UI Development", sub: "Pixel-precise, production-grade interfaces", accent: "cyan" },
@@ -286,12 +286,12 @@ export default function About() {
                 ].map((spec) => (
                   <div key={spec.label} className="flex items-start gap-3">
                     <span
-                      className="inline-block h-1.5 w-1.5 rotate-45 flex-shrink-0 mt-[5px]"
+                      className="inline-block h-2 w-2 rotate-45 flex-shrink-0 mt-[7px]"
                       style={{ background: spec.accent === "orange" ? "#f97316" : "#58aec3" }}
                     />
                     <div>
-                      <div className="font-display text-sm font-black uppercase text-ink">{spec.label}</div>
-                      <div className="font-mono text-[10px] text-ink-soft">{spec.sub}</div>
+                      <div className="font-display text-[17px] font-black uppercase text-ink leading-tight">{spec.label}</div>
+                      <div className="text-[13.5px] text-ink-soft leading-[1.5] mt-1">{spec.sub}</div>
                     </div>
                   </div>
                 ))}
@@ -301,9 +301,9 @@ export default function About() {
             {/* Status strip */}
             <motion.div variants={item} className="mt-3 border p-4 flex items-center justify-between backdrop-blur-md bg-white/55" style={{ borderColor: "var(--color-ink)" }}>
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest opacity-60">Current status</div>
-                <div className="font-display text-sm font-black uppercase text-ink mt-0.5">Full-time · OptiPhoenix</div>
-                <div className="font-mono text-[10px] text-ink-soft">Delhi, India</div>
+                <div className="font-mono text-[11.5px] uppercase tracking-[0.14em] text-ink-soft font-semibold">Current status</div>
+                <div className="font-display text-[17px] font-black uppercase text-ink mt-1 leading-tight">Full-time · OptiPhoenix</div>
+                <div className="text-[13px] text-ink-soft mt-0.5">Delhi, India</div>
               </div>
               <span className="inline-block h-2 w-2 rounded-full bg-[#3ecf8e] animate-pulse flex-shrink-0" />
             </motion.div>

@@ -1,6 +1,8 @@
 "use client";
 
-const tokens = [
+import { openToWork } from "@/lib/profile";
+
+const baseTokens = [
   "VISION (00) UNLOCKED",
   "MODULAR PATTERN",
   "VS_0151 / EXPRESS",
@@ -8,8 +10,9 @@ const tokens = [
   "LOC: 35°28′09.2″N",
   "REL.0884105",
   "FRONTEND ENGINEER",
-  "AVAILABLE FOR WORK",
 ];
+
+const tokens = openToWork ? [...baseTokens, "AVAILABLE FOR WORK"] : baseTokens;
 
 export default function TopTape() {
   const repeated = [...tokens, ...tokens, ...tokens];

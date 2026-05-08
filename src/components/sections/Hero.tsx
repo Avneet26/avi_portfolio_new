@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import DottedGlobe from "@/components/ui/DottedGlobe";
 import IDCard from "@/components/ui/IDCard";
-import { profile } from "@/lib/profile";
+import { profile, openToWork } from "@/lib/profile";
 
 export default function Hero() {
   return (
@@ -47,16 +47,16 @@ export default function Hero() {
 
       <div className="relative mx-auto w-full max-w-[1400px] px-6 lg:px-10 pt-6 lg:pt-10 xl:pt-14 pb-6 xl:pb-8 flex-1 flex flex-col">
         {/* Coordinate / sector strip */}
-        <div className="font-mono text-[10px] xl:text-[11px] uppercase tracking-[0.28em] flex items-center justify-between gap-4 mb-5 lg:mb-8 xl:mb-12">
-          <div className="flex items-center gap-3">
+        <div className="font-mono text-[12px] xl:text-[13px] uppercase tracking-[0.16em] flex items-center justify-between gap-4 mb-5 lg:mb-8 xl:mb-12 text-ink">
+          <div className="flex items-center gap-3 font-semibold">
             <span className="inline-block h-1.5 w-1.5 rotate-45 bg-orange-500" />
             <span>SFE.01 · Frontend Engineer · India / Remote · 2026</span>
           </div>
-          <div className="hidden md:flex items-center gap-3 opacity-70">
-            <span>SECTOR <span className="text-orange-500">07</span></span>
-            <span>·</span>
+          <div className="hidden md:flex items-center gap-3 text-ink-soft">
+            <span>SECTOR <span className="text-orange-500 font-semibold">07</span></span>
+            <span className="opacity-40">·</span>
             <span>LAT 28.61°N</span>
-            <span>·</span>
+            <span className="opacity-40">·</span>
             <span>LON 77.20°E</span>
           </div>
         </div>
@@ -118,24 +118,24 @@ export default function Hero() {
             </motion.div>
 
             <div className="mt-6 lg:mt-10 xl:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 max-w-2xl xl:max-w-3xl">
-              <p className="text-ink-soft leading-[1.6] text-[13px] md:text-sm xl:text-base">
-                {profile.role} at <span className="text-ink font-semibold">{profile.company}</span>.{" "}
-                {profile.yearsExperience}+ yrs across full-time and freelance — pixel-precise, production-grade web products.
+              <p className="text-ink leading-[1.65] text-[15px] md:text-[15px] xl:text-[17px]">
+                <span className="font-semibold">{profile.role}</span> at <span className="font-semibold">{profile.company}</span>.{" "}
+                <span className="text-ink-soft">{profile.yearsExperience}+ yrs across full-time and freelance — pixel-precise, production-grade web products.</span>
               </p>
-              <p className="text-ink-soft leading-[1.6] text-[13px] md:text-sm xl:text-base">
+              <p className="text-ink-soft leading-[1.65] text-[15px] md:text-[15px] xl:text-[17px]">
                 {profile.tagline}
               </p>
             </div>
 
             <div className="mt-6 lg:mt-8 xl:mt-10 flex flex-wrap items-center gap-3 xl:gap-4">
-              <a href="#projects" className="btn-block" style={{ padding: "0.65rem 1rem", fontSize: "13px" }}>View Projects →</a>
-              <a href="#contact" className="btn-ghost" style={{ padding: "0.55rem 0.9rem", fontSize: "11px" }}>Hire Me</a>
+              <a href="#projects" className="btn-block" style={{ padding: "0.7rem 1.1rem", fontSize: "14px" }}>View Projects →</a>
+              <a href="#contact" className="btn-ghost" style={{ padding: "0.6rem 1rem", fontSize: "13px" }}>Hire Me</a>
 
               {/* Tech-stack strip — inline */}
-              <div className="ml-1 hidden md:flex flex-wrap items-center gap-x-4 gap-y-1 pl-3 border-l" style={{ borderColor: "rgba(14,22,32,0.3)" }}>
+              <div className="ml-1 hidden md:flex flex-wrap items-center gap-x-4 gap-y-1 pl-3 border-l" style={{ borderColor: "rgba(14,22,32,0.4)" }}>
                 {["React", "Next", "TS", "Tailwind", "Motion", "Node"].map((tech) => (
-                  <span key={tech} className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-soft flex items-center gap-1.5">
-                    <span className="inline-block h-1 w-1 rotate-45 bg-orange-500 opacity-70" />
+                  <span key={tech} className="font-mono text-[12px] uppercase tracking-[0.1em] text-ink flex items-center gap-1.5 font-semibold">
+                    <span className="inline-block h-1 w-1 rotate-45 bg-orange-500" />
                     {tech}
                   </span>
                 ))}
@@ -163,11 +163,11 @@ export default function Hero() {
                 { label: "Position", value: "Sr. Frontend" },
                 { label: "Company", value: "OptiPhoenix" },
                 { label: "Stack", value: "REACT / TS" },
-                { label: "Status", value: "Open to Work" },
+                ...(openToWork ? [{ label: "Status", value: "Open to Work" }] : []),
               ]}
             />
-            <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft flex items-center gap-2 pt-1">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#3ecf8e] animate-pulse" />
+            <div className="font-mono text-[12px] uppercase tracking-[0.12em] text-ink flex items-center gap-2 pt-1 font-semibold">
+              <span className="inline-block h-2 w-2 rounded-full bg-[#3ecf8e] animate-pulse" />
               Wired for production · Ships to scale
             </div>
           </div>
@@ -175,20 +175,20 @@ export default function Hero() {
 
         {/* Bottom rail */}
         <div
-          className="mt-6 lg:mt-8 xl:mt-10 flex items-center justify-between gap-6 pt-3 xl:pt-4 font-mono text-[10px] xl:text-[11px] uppercase tracking-[0.22em]"
+          className="mt-6 lg:mt-8 xl:mt-10 flex items-center justify-between gap-6 pt-3 xl:pt-4 font-mono text-[12px] xl:text-[13px] uppercase tracking-[0.12em]"
           style={{ borderColor: "var(--color-ink)" }}
         >
-          <div className="flex items-center gap-3">
-            <span className="text-orange-500">01</span>
-            <span className="opacity-60">/</span>
-            <span>Hero</span>
+          <div className="flex items-center gap-3 text-ink">
+            <span className="text-orange-500 font-semibold">01</span>
+            <span className="opacity-50">/</span>
+            <span className="font-semibold">Hero</span>
             <span className="opacity-40 mx-1">·</span>
-            <span className="opacity-70">Built<span className="text-cyan-500"> / </span>for<span className="text-cyan-500"> / </span>the web</span>
+            <span>Built<span className="text-cyan-500"> / </span>for<span className="text-cyan-500"> / </span>the web</span>
           </div>
-          <div className="hidden md:flex items-center gap-3 opacity-70">
+          <div className="hidden md:flex items-center gap-3 text-ink-soft">
             <span>Scroll for index</span>
-            <span aria-hidden className="inline-block h-3 w-px bg-[var(--color-ink)] opacity-50" />
-            <span className="text-orange-500">↓</span>
+            <span aria-hidden className="inline-block h-3 w-px bg-[var(--color-ink)] opacity-60" />
+            <span className="text-orange-500 font-semibold">↓</span>
           </div>
         </div>
       </div>
