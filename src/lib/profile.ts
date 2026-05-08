@@ -1,3 +1,6 @@
+// Toggle to show/hide "open to work" signals across the entire site
+export const openToWork = false;
+
 export const profile = {
   name: "Avneet Singh Virdi",
   shortName: "Avneet",
@@ -30,92 +33,159 @@ export const about = {
 
 export const experience = [
   {
-    company: "OptiPhoenix",
-    role: "Senior Frontend Engineer",
-    period: "2025 — Present",
+    company: "BizData",
+    role: "Full Stack Developer Intern",
+    period: "2021 · 5 mo",
+    year: "2021",
     location: "New Delhi · India",
     bullets: [
-      "Rejoined as Senior FE — now leading a team of 5–6 developers and 3–4 QA engineers alongside the PM, running sprint planning, timelines, and estimations.",
-      "Owns client calls directly and manages delivery expectations — a real step up from just shipping code.",
-      "Leading the Data Collection & Analysis initiative: designed and built the pipeline that aggregates CRO A/B test data from multiple sources into a clean, queryable format the whole CRO team uses to plan their next experiments.",
-      "Driving AI integration across the team — rolling out agentic coding workflows, custom Claude Code prompt frameworks, and AI-assisted dev practices to cut build time and increase quality.",
+      "Built survey-collection web apps integrated with the company's data-ingestion servers.",
+      "Owned delivery end-to-end across frontend, PHP/MySQL backend, and Linux deployment.",
     ],
-    stack: ["React", "TypeScript", "jQuery", "ABTasty", "Optimizely", "Convert", "Claude Code"],
-  },
-  {
-    company: "RPS Composites",
-    role: "Full Stack Developer",
-    period: "2024 — 2025",
-    location: "Maple · Ontario · Canada",
-    bullets: [
-      "8-month contract at a major plastic parts manufacturing company — my first proper western corporate experience.",
-      "Built an inventory management system from scratch on Microsoft PowerApps, wiring it into their existing Excel-based databases.",
-      "Replaced manual tracking for an entire manufacturing operation — shipped something that genuinely made a difference for a team that had been doing it the hard way for years.",
-    ],
-    stack: ["Microsoft PowerApps", "Power Query", "Excel", "Azure"],
+    stack: ["PHP", "JavaScript", "MySQL", "Linux"],
   },
   {
     company: "OptiPhoenix",
     role: "Junior Frontend Developer",
     period: "2021 — 2023",
+    year: "2021",
     location: "New Delhi · India",
     bullets: [
-      "Joined as a junior A/B test developer — built and shipped UI components across client websites for a CRO agency.",
-      "Worked on experiments for major hotel chains (Accor Hotels, Fairmont), tech giants (Microsoft, Xbox, Minecraft), and e-commerce brands (Euronics and others across Europe and North America).",
-      "Grew from executing tickets to understanding the full experiment lifecycle: build, QA, instrument, and analyse.",
+      "Shipped A/B test variants across global client sites for a Conversion-Rate-Optimization agency.",
+      "Delivered experiments for Accor Hotels, Fairmont, Microsoft, Xbox, Minecraft, and EU/NA e-commerce brands.",
+      "Owned the full experiment lifecycle — build, QA, instrumentation, and post-launch analysis.",
     ],
-    stack: ["jQuery", "JavaScript", "HTML", "CSS", "ABTasty", "Optimizely", "Convert", "VWO"],
+    stack: ["jQuery", "JavaScript", "ABTasty", "Optimizely", "Convert", "VWO"],
   },
   {
-    company: "BizData",
-    role: "Full Stack Developer Intern",
-    period: "2021 · 5 months",
+    company: "RPS Composites",
+    role: "Full Stack Developer",
+    period: "2024 — 2025",
+    year: "2024",
+    location: "Maple · ON · Canada",
+    bullets: [
+      "8-month contract: architected an inventory management system on Microsoft PowerApps from the ground up.",
+      "Replaced manual Excel-based tracking by wiring PowerApps into the existing operational data sources.",
+    ],
+    stack: ["PowerApps", "Power Query", "Excel", "Azure"],
+  },
+  {
+    company: "OptiPhoenix",
+    role: "Senior Frontend Engineer",
+    period: "2025 — Present",
+    year: "2025",
     location: "New Delhi · India",
     bullets: [
-      "First job out of B.Tech via campus placement — built form survey collection websites for their data integration servers.",
-      "Full stack from day one: PHP, HTML, CSS, JavaScript, MySQL on the backend, and Linux server setup for deployment.",
-      "No senior to hold your hand, no safety net. Learned fast.",
+      "Lead a cross-functional pod of 5–6 engineers and 3–4 QA — owning sprint planning, estimation, and client delivery.",
+      "Architected the CRO data pipeline aggregating multi-source A/B results into a queryable dataset used company-wide.",
+      "Driving AI-assisted development — rolling out agentic workflows and custom Claude Code frameworks across the team.",
     ],
-    stack: ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "Linux"],
+    stack: ["React", "TypeScript", "ABTasty", "Optimizely", "Claude Code"],
   },
 ];
 
-export const freelance = [
-  { client: "Tossit Pizza",         year: "2024", scope: "Website + SEO",     note: "DeeGee Graphics · Ontario GTA" },
-  { client: "Active Coachlines",    year: "2024", scope: "Website + SEO",     note: "DeeGee Graphics · Ontario GTA" },
-  { client: "Blends & Bites",       year: "2024", scope: "Website + Branding", note: "DeeGee Graphics · Restaurant" },
-  { client: "Golden Hours Bistro",  year: "2025", scope: "Website + SEO",     note: "DeeGee Graphics · Elmvale + Barrie" },
-  { client: "Blue Bagels",          year: "2024", scope: "CRO / Frontend",    note: "French CRO agency · A/B builds" },
+export type FreelanceItem = {
+  client: string;
+  year: string;
+  scope: string;
+  note: string;
+  link?: string;
+  github?: string;
+};
+
+export const freelance: FreelanceItem[] = [
+  { client: "Tiger Tires",         year: "2025", scope: "Job Admin · Workshop Mgmt", note: "Truck tire workshop · live job screen + invoicing", github: "https://github.com/Avneet26/NightRiderWebsite" },
+  { client: "Golden Hours Bistro", year: "2025", scope: "Website + SEO",              note: "DeeGee Graphics · Elmvale + Barrie" },
+  { client: "Tossit Pizza",        year: "2024", scope: "Website + SEO",              note: "DeeGee Graphics · Ontario GTA",      link: "https://tossitpizza.com/" },
+  { client: "Active Coachlines",   year: "2024", scope: "Website + SEO",              note: "DeeGee Graphics · Ontario GTA",      link: "https://activecoach.ca/" },
+  { client: "DeeGee Graphics",     year: "2024", scope: "Agency Collaboration",       note: "Multi-client website + branding work · Ontario", link: "https://deegeegraphics.com/" },
+  { client: "Blends & Bites",      year: "2024", scope: "Website + Branding",         note: "DeeGee Graphics · Restaurant",       link: "http://blendsandbites.com/" },
+  { client: "Blue Bagels",         year: "2024", scope: "CRO / Frontend",             note: "French CRO agency · A/B builds" },
 ];
 
-export const projects = [
+export type LiveProject = {
+  code: string;
+  title: string;
+  tagline: string;
+  description: string;
+  cover: string;
+  stack: string[];
+  github?: string;
+  link?: string;
+};
+
+export const liveProjects: LiveProject[] = [
   {
-    code: "PRJ-001",
-    title: "Lorem Vector",
-    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit phasellus.",
-    stack: ["Next.js", "WebGL", "Framer Motion"],
-    cover: "https://placehold.co/800x600/58aec3/0e1620?text=PRJ-001&font=oswald",
+    code: "LIVE-01",
+    title: "LooperVid",
+    tagline: "Turn GIFs into YouTube-ready looping videos with audio",
+    description:
+      "A free, browser-based tool for creators making slowed+reverb edits, lo-fi visualizers, and aesthetic compilations. Multi-threaded WebAssembly via FFmpeg.wasm runs the full pipeline locally — no uploads, no sign-ups. Built in collaboration with AI: product direction, UX, and architecture decisions are mine; AI accelerates the iteration loop, not the thinking.",
+    cover: "/assets/looopervid.png",
+    stack: ["React", "FFmpeg.wasm", "WebAssembly", "SharedArrayBuffer"],
+    github: "https://github.com/Avneet26/gif-loopmaker",
+    link: "https://www.loopervid.com/",
   },
   {
-    code: "PRJ-002",
-    title: "Ipsum Console",
-    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    stack: ["React", "TypeScript", "D3"],
-    cover: "https://placehold.co/800x600/ff8a47/0e1620?text=PRJ-002&font=oswald",
+    code: "LIVE-02",
+    title: "Slowed & Reverb Maker",
+    tagline: "One-click slowed + reverb / nightcore audio in the browser",
+    description:
+      "A client-side audio editor with tempo, pitch, and reverb controls plus one-click presets (Slowed + Reverb, Nightcore, and more). All DSP runs locally — files never leave the browser. Built in collaboration with AI: scope, UX, and engineering calls are driven by me, with AI as a force-multiplier on the build.",
+    cover: "/assets/slowedreverb.png",
+    stack: ["React", "Web Audio API", "Client-side DSP"],
+    github: "https://github.com/Avneet26/slowedreverb-maker",
+    link: "https://www.slowedreverbmaker.com/",
+  },
+];
+
+export type FunProject = {
+  code: string;
+  title: string;
+  tagline: string;
+  blurb: string;
+  stack: string[];
+  cover: string;
+  github?: string;
+  link?: string;
+  accent: "cyan" | "orange" | "ink";
+};
+
+export const projects: FunProject[] = [
+  {
+    code: "FUN-01",
+    title: "Lightweight Analytics",
+    tagline: "Privacy-first analytics platform",
+    blurb:
+      "Working analytics tool — sub-1KB script, no cookies, GDPR-friendly. Stable today, with room to expand in any direction. Open to live use, with permission.",
+    stack: ["TypeScript", "Next.js", "Vercel", "TursoDB"],
+    cover: "/assets/analytics.png",
+    github: "https://github.com/Avneet26/lightweight-analytics",
+    link: "https://lightweight-analytics.vercel.app/",
+    accent: "cyan",
   },
   {
-    code: "PRJ-003",
-    title: "Dolor Atlas",
-    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    stack: ["Next.js", "Tailwind", "Mapbox"],
-    cover: "https://placehold.co/800x600/0e1620/f1efe7?text=PRJ-003&font=oswald",
+    code: "FUN-02",
+    title: "Lights Out",
+    tagline: "Classic puzzle · React build",
+    blurb: "The classic Lights Out puzzle, built while learning React state patterns.",
+    stack: ["React"],
+    cover: "/assets/lightsout.png",
+    github: "https://github.com/Avneet26/lights-out-react",
+    link: "https://lightsout26.netlify.app/",
+    accent: "orange",
   },
   {
-    code: "PRJ-004",
-    title: "Sit Reactor",
-    blurb: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    stack: ["React", "Three.js"],
-    cover: "https://placehold.co/800x600/c4e6ee/0e1620?text=PRJ-004&font=oswald",
+    code: "FUN-03",
+    title: "Memory Match",
+    tagline: "Pattern memory game · Vanilla JS",
+    blurb:
+      "Pattern-matching game built for a college coding competition. Earned a nod from the mentors.",
+    stack: ["Vanilla JS", "HTML", "CSS"],
+    cover: "/assets/memorygame.png",
+    github: "https://github.com/Avneet26/memory-game-js",
+    link: "https://avneet26.github.io/memory-game-js/",
+    accent: "ink",
   },
 ];
 
