@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 const SECTIONS = [
   { id: "home",       label: "Home" },
@@ -29,15 +30,54 @@ function scrollToSection(id: string) {
   if (history.replaceState) history.replaceState(null, "", `#${id}`);
 }
 
+function SunIcon({ size = 11 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="4.5" />
+      <line x1="12" y1="2" x2="12" y2="5" />
+      <line x1="12" y1="19" x2="12" y2="22" />
+      <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+      <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+      <line x1="2" y1="12" x2="5" y2="12" />
+      <line x1="19" y1="12" x2="22" y2="12" />
+      <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+      <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+    </svg>
+  );
+}
+
+function MoonIcon({ size = 11 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const [active, setActive] = useState<SectionId>("home");
+  const [menuOpen, setMenuOpen] = useState(false);
   const listRef = useRef<HTMLUListElement>(null);
   const indicatorRef = useRef<HTMLSpanElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useTheme();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     scrollToSection(id);
+    setMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [menuOpen]);
 
   useEffect(() => {
     const els = SECTIONS
@@ -101,6 +141,7 @@ export default function Navbar() {
           <span aria-hidden className="absolute -bottom-[3px] -left-[3px] h-1.5 w-1.5 bg-cyan-500" />
           <span aria-hidden className="absolute -bottom-[3px] -right-[3px] h-1.5 w-1.5 bg-orange-500" />
 
+          {/* Logo */}
           <a
             href="#home"
             onClick={(e) => handleClick(e, "home")}
@@ -119,6 +160,7 @@ export default function Navbar() {
             </span>
           </a>
 
+          {/* Desktop nav list */}
           <ul
             ref={listRef}
             className="nav-list relative hidden lg:flex items-stretch font-mono text-[10px] uppercase tracking-[0.14em]"
@@ -133,7 +175,7 @@ export default function Navbar() {
                   aria-current={active === s.id ? "true" : undefined}
                   className="nav-link relative flex items-center gap-1.5 px-2.5 py-2 transition-colors"
                 >
-                  <span className="nav-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="nav-num hidden min-[1220px]:inline">{String(i + 1).padStart(2, "0")}</span>
                   <span>{s.label}</span>
                 </a>
               </li>
@@ -145,21 +187,188 @@ export default function Navbar() {
             />
           </ul>
 
-          <a
-            href="#contact"
-            onClick={(e) => handleClick(e, "contact")}
-            className="inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-transform shrink-0 hover:-translate-y-[1px]"
-            style={{
-              border: "1.5px solid var(--color-ink)",
-              background: "var(--color-orange-500)",
-              color: "var(--color-ink)",
-              boxShadow: "3px 3px 0 0 var(--color-ink)",
-            }}
-          >
-            Get in touch <span aria-hidden>→</span>
-          </a>
+          {/* Right controls */}
+          <div className="flex items-center gap-2 shrink-0">
+
+            {/* Theme toggle — desktop only (segmented control) */}
+            <div
+              role="group"
+              aria-label="Color theme"
+              className="hidden lg:flex h-7 shrink-0"
+              style={{ border: "1.5px solid var(--color-ink)" }}
+            >
+              {/* Sun / Light segment */}
+              <button
+                onClick={() => theme !== "light" && toggleTheme()}
+                aria-label="Light mode"
+                aria-pressed={theme === "light"}
+                className="relative flex items-center justify-center w-8 h-full transition-colors duration-200"
+                style={{
+                  background: theme === "light"
+                    ? "color-mix(in srgb, var(--color-orange-500) 14%, var(--color-paper-elevated))"
+                    : "var(--color-paper-elevated)",
+                  borderRight: "1px solid color-mix(in srgb, var(--color-ink) 30%, transparent)",
+                }}
+              >
+                {theme === "light" && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2px]"
+                    style={{ background: "var(--color-orange-500)" }}
+                  />
+                )}
+                <span style={{
+                  color: theme === "light" ? "var(--color-orange-500)" : "var(--color-ink-soft)",
+                  opacity: theme === "light" ? 1 : 0.4,
+                  transition: "color 200ms, opacity 200ms",
+                  display: "flex",
+                }}>
+                  <SunIcon size={13} />
+                </span>
+              </button>
+
+              {/* Moon / Dark segment */}
+              <button
+                onClick={() => theme !== "dark" && toggleTheme()}
+                aria-label="Dark mode"
+                aria-pressed={theme === "dark"}
+                className="relative flex items-center justify-center w-8 h-full transition-colors duration-200"
+                style={{
+                  background: theme === "dark"
+                    ? "color-mix(in srgb, var(--color-cyan-500) 14%, var(--color-paper-elevated))"
+                    : "var(--color-paper-elevated)",
+                }}
+              >
+                {theme === "dark" && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2px]"
+                    style={{ background: "var(--color-cyan-500)" }}
+                  />
+                )}
+                <span style={{
+                  color: theme === "dark" ? "var(--color-cyan-500)" : "var(--color-ink-soft)",
+                  opacity: theme === "dark" ? 1 : 0.4,
+                  transition: "color 200ms, opacity 200ms",
+                  display: "flex",
+                }}>
+                  <MoonIcon size={13} />
+                </span>
+              </button>
+            </div>
+
+            {/* CTA — desktop only */}
+            <a
+              href="#contact"
+              onClick={(e) => handleClick(e, "contact")}
+              className="hidden lg:inline-flex items-center gap-2 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-transform shrink-0 hover:-translate-y-[1px]"
+              style={{
+                border: "1.5px solid var(--color-ink)",
+                background: "var(--color-orange-500)",
+                color: "var(--color-ink)",
+                boxShadow: "3px 3px 0 0 var(--color-ink)",
+              }}
+            >
+              Get in touch <span aria-hidden>→</span>
+            </a>
+
+            {/* Hamburger — mobile/tablet */}
+            <div ref={menuRef} className="relative lg:hidden">
+              <button
+                onClick={() => setMenuOpen((o) => !o)}
+                aria-label="Toggle navigation menu"
+                aria-expanded={menuOpen}
+                className="flex flex-col justify-center items-center h-8 w-8 gap-[5px]"
+                style={{
+                  border: "1.5px solid var(--color-ink)",
+                  background: "var(--color-paper-elevated)",
+                }}
+              >
+                <span
+                  className="block w-4 h-px transition-transform duration-200"
+                  style={{
+                    background: "var(--color-ink)",
+                    transform: menuOpen ? "translateY(6px) rotate(45deg)" : "none",
+                  }}
+                />
+                <span
+                  className="block w-4 h-px transition-opacity duration-200"
+                  style={{
+                    background: "var(--color-ink)",
+                    opacity: menuOpen ? 0 : 1,
+                  }}
+                />
+                <span
+                  className="block w-4 h-px transition-transform duration-200"
+                  style={{
+                    background: "var(--color-ink)",
+                    transform: menuOpen ? "translateY(-6px) rotate(-45deg)" : "none",
+                  }}
+                />
+              </button>
+
+              {/* Dropdown */}
+              {menuOpen && (
+                <div
+                  className="absolute right-0 top-full mt-2 w-44 z-50"
+                  style={{
+                    border: "1.5px solid var(--color-ink)",
+                    background: "var(--color-paper-elevated)",
+                    boxShadow: "4px 4px 0 0 var(--color-ink)",
+                  }}
+                >
+                  <span aria-hidden className="absolute -top-[3px] -left-[3px] h-1.5 w-1.5 bg-orange-500" />
+                  <span aria-hidden className="absolute -top-[3px] -right-[3px] h-1.5 w-1.5 bg-cyan-500" />
+                  <span aria-hidden className="absolute -bottom-[3px] -left-[3px] h-1.5 w-1.5 bg-cyan-500" />
+                  <span aria-hidden className="absolute -bottom-[3px] -right-[3px] h-1.5 w-1.5 bg-orange-500" />
+
+                  <ul className="py-1">
+                    {SECTIONS.map((s, i) => (
+                      <li key={s.id}>
+                        <a
+                          href={`#${s.id}`}
+                          onClick={(e) => handleClick(e, s.id)}
+                          className="flex items-center gap-2.5 px-3.5 py-[7px] font-mono text-[10px] uppercase tracking-[0.14em] transition-colors"
+                          style={{
+                            color: active === s.id ? "var(--color-orange-500)" : "var(--color-ink)",
+                            background: active === s.id
+                              ? "color-mix(in srgb, var(--color-orange-500) 8%, transparent)"
+                              : "transparent",
+                          }}
+                        >
+                          <span style={{ opacity: 0.4 }}>{String(i + 1).padStart(2, "0")}</span>
+                          <span>{s.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div
+                    className="mx-3 border-t"
+                    style={{ borderColor: "color-mix(in srgb, var(--color-ink) 18%, transparent)" }}
+                  />
+
+                  <div className="px-3 py-2">
+                    <button
+                      onClick={toggleTheme}
+                      className="w-full flex items-center justify-between gap-2 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors"
+                      style={{
+                        border: "1px solid var(--color-ink)",
+                        background: "var(--color-paper)",
+                        color: "var(--color-ink)",
+                      }}
+                    >
+                      <span>{theme === "dark" ? "Dark Mode" : "Light Mode"}</span>
+                      <span style={{ color: theme === "dark" ? "var(--color-cyan-500)" : "var(--color-orange-500)" }}>
+                        {theme === "dark" ? <MoonIcon size={12} /> : <SunIcon size={12} />}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </nav>
 
+        {/* Mobile section progress bar */}
         <ol
           className="mt-1.5 flex lg:hidden items-center gap-1 font-mono text-[9px] uppercase tracking-[0.18em]"
           aria-label="Section progress"

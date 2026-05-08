@@ -20,7 +20,8 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const dpr = window.devicePixelRatio || 1
+    const isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2)
     const w = width
     const h = height
     const radius = Math.min(w, h) / 2.2
@@ -75,7 +76,7 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
       return false
     }
 
-    const buildDots = (feature: any, step = 1.4): [number, number][] => {
+    const buildDots = (feature: any, step = isMobile ? 2.2 : 1.4): [number, number][] => {
       const [[minLng, minLat], [maxLng, maxLat]] = d3.geoBounds(feature)
       const dots: [number, number][] = []
       for (let lng = minLng; lng <= maxLng; lng += step)
@@ -160,8 +161,14 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
       }
     }
 
+    let paused = false
+    const io = new IntersectionObserver(([entry]) => { paused = !entry.isIntersecting }, { threshold: 0 })
+    io.observe(canvas)
+
+    const rotateSpeed = isMobile ? 0.2 : 0.3
     const timer = d3.timer(() => {
-      rotation[0] += 0.3
+      if (paused) return
+      rotation[0] += rotateSpeed
       projection.rotate(rotation)
       render()
     })
@@ -170,6 +177,7 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
 
     return () => {
       timer.stop()
+      io.disconnect()
       controller.abort()
       cancelled = true
     }

@@ -102,10 +102,10 @@ function Entry({
 
   return (
     <motion.li
-      initial={{ opacity: 0, x: -16 }}
+      initial={{ opacity: 0, x: -12 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 0.45, ease, delay: index * 0.06 }}
+      viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+      transition={{ duration: 0.3, ease, delay: index * 0.04 }}
       className="group relative"
     >
       {/* spine node */}
@@ -139,7 +139,7 @@ function Entry({
         whileHover={{ x: 4 }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
         className="relative border-2 border-ink p-4 lg:p-5"
-        style={{ background: "#ffffff", boxShadow: "5px 5px 0 0 var(--color-ink)" }}
+        style={{ background: "var(--color-paper-elevated)", boxShadow: "5px 5px 0 0 var(--color-ink)" }}
       >
         {/* corner ticks */}
         <CornerTicks />
@@ -152,7 +152,7 @@ function Entry({
             transition: "opacity 200ms ease-out",
             background:
               "repeating-linear-gradient(0deg, transparent 0px, transparent 3px, color-mix(in srgb, var(--color-cyan-500) 8%, transparent) 3px, color-mix(in srgb, var(--color-cyan-500) 8%, transparent) 4px)",
-            mixBlendMode: "multiply",
+            mixBlendMode: "normal",
           }}
         />
 
@@ -178,10 +178,10 @@ function Entry({
             {entry.stack.map((s, k) => (
               <motion.span
                 key={s}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 4 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, ease, delay: 0.15 + k * 0.03 }}
+                transition={{ duration: 0.22, ease, delay: 0.08 + k * 0.02 }}
                 whileHover={{ y: -2 }}
                 className="px-2.5 py-[4px] border border-rule font-mono text-[11.5px] uppercase tracking-[0.08em] text-ink hover:bg-cyan-100/60 hover:border-ink"
                 style={{ transition: "background 160ms ease-out, border-color 160ms ease-out" }}

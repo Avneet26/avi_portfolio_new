@@ -22,7 +22,7 @@ export default function TechStack() {
       {stack.map((t) => (
         <div
           key={t.name}
-          className="tech-card group relative border bg-white/55 backdrop-blur-md px-2 py-1.5 cursor-default select-none"
+          className="tech-card group relative border bg-card backdrop-blur-md px-2 py-1.5 cursor-default select-none"
           style={{ borderColor: "var(--color-ink)" }}
         >
 

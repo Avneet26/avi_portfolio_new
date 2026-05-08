@@ -140,10 +140,10 @@ function FreelanceRow({
 }) {
   return (
     <motion.li
-      initial={{ opacity: 0, x: -10 }}
+      initial={{ opacity: 0, x: -6 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 0.4, ease, delay: index * 0.05 }}
+      viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+      transition={{ duration: 0.25, ease, delay: index * 0.03 }}
       className={`relative px-4 sm:px-5 py-4 hover:bg-orange-100/40 ${!last ? "border-b-2 border-ink" : ""}`}
     >
       {/* Mobile layout: column, button pinned top-right */}

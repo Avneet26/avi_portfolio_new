@@ -30,6 +30,29 @@
   --radius-lg: 8px;
 }
 
+/* ─── Dark mode overrides ───────────────────────────────────────────────── */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper:          #0f1923;   /* deep navy, easy on eyes */
+  --color-paper-elevated: #141e2a;   /* slightly lifted navy */
+  --color-ink:            #dfd9cc;   /* warm off-white */
+  --color-ink-soft:       #7b96a9;   /* muted blue-grey */
+  --color-rule:           #1d2e3c;
+
+  /* Brighten cyan-700 slightly so gradients read on dark */
+  --color-cyan-700:  #3d9ab5;
+  --color-cyan-300:  #58aec3;
+  --color-cyan-100:  #1e3d4d;
+  --color-cyan-50:   #162a36;
+
+  /* Orange: slightly toned down so it doesn't glare on dark navy */
+  --color-orange-500: #d4672a;
+  --color-orange-700: #a34d1a;
+  --color-orange-100: #3d200d;
+  --color-orange-300: #c25a1f;
+}
+
 @layer base {
   :root { color-scheme: light; }
 
@@ -385,5 +408,104 @@
     .tech-card:hover { transform: none; }
     .tech-card:hover .tech-logo { transform: none; }
     .tech-card .tech-scan::after { display: none; }
+  }
+
+  /* ─── Dark mode utility overrides ─────────────────────────────────────── */
+
+  /* Section backgrounds — richer, neon-tinged on dark navy */
+  [data-theme="dark"] .bg-cyber-a {
+    background-color: var(--color-paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(88,174,195,0.08) 1px, transparent 0),
+      linear-gradient(rgba(88,174,195,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88,174,195,0.07) 1px, transparent 1px);
+    background-size: 4px 4px, 56px 56px, 56px 56px;
+  }
+
+  [data-theme="dark"] .bg-cyber-b {
+    background-color: var(--color-paper-elevated);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(88,174,195,0.03) 0 1px, transparent 1px 14px),
+      radial-gradient(circle at 8px 8px, rgba(88,174,195,0.05) 0.9px, transparent 1.2px),
+      linear-gradient(rgba(88,174,195,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88,174,195,0.05) 1px, transparent 1px);
+    background-size: auto, 16px 16px, 56px 56px, 56px 56px;
+  }
+
+  /* Section tape — slightly brighter on dark */
+  [data-theme="dark"] .section-tape::before { opacity: 0.45; }
+
+  /* Scanlines — light shimmer instead of dark */
+  [data-theme="dark"] .scanlines::before {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 3px,
+      rgba(255,255,255,0.018) 3px,
+      rgba(255,255,255,0.018) 4px
+    );
+  }
+
+  /* Outline text — warm white stroke on dark */
+  [data-theme="dark"] .text-outline {
+    -webkit-text-stroke: 2px var(--color-ink);
+    text-stroke: 2px var(--color-ink);
+  }
+
+  /* ID card */
+  [data-theme="dark"] .id-card {
+    background: color-mix(in srgb, var(--color-paper-elevated) 95%, transparent);
+    border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  /* Buttons */
+  [data-theme="dark"] .btn-block {
+    box-shadow: 4px 4px 0 0 color-mix(in srgb, var(--color-ink) 60%, transparent);
+  }
+  [data-theme="dark"] .btn-block:hover { box-shadow: 6px 6px 0 0 color-mix(in srgb, var(--color-ink) 60%, transparent); }
+  [data-theme="dark"] .btn-block:active { box-shadow: 2px 2px 0 0 color-mix(in srgb, var(--color-ink) 60%, transparent); }
+
+  [data-theme="dark"] .btn-ghost { border-color: color-mix(in srgb, var(--color-ink) 40%, transparent); }
+  [data-theme="dark"] .btn-ghost:hover { background: color-mix(in srgb, var(--color-ink) 15%, transparent); color: var(--color-ink); }
+
+  /* Nav active indicator */
+  [data-theme="dark"] .nav-link[data-active="true"] .nav-num {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+
+  /* Tech cards */
+  [data-theme="dark"] .tech-card:hover {
+    background-color: color-mix(in srgb, var(--color-paper-elevated) 90%, var(--color-cyan-500));
+    border-color: var(--color-cyan-500);
+    box-shadow: 3px 3px 0 0 rgba(88,174,195,0.18), 0 0 0 1px rgba(88,174,195,0.3);
+  }
+
+  /* Crosshair ring — warm white in dark */
+  [data-theme="dark"] .crosshair-ring { color: var(--color-ink); }
+
+  /* Frosted card surface — adapts to both themes */
+  .bg-card {
+    background: color-mix(in srgb, var(--color-paper-elevated) 75%, transparent);
+  }
+  /* Stat card hover in dark: subtle cyan-tinted surface */
+  [data-theme="dark"] .hover\:bg-cyan-50\/60:hover {
+    background-color: color-mix(in srgb, var(--color-cyan-500) 10%, var(--color-paper-elevated)) !important;
+  }
+}
+
+/* Theme cross-fade via View Transitions API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.001ms;
   }
 }

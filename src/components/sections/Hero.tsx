@@ -39,7 +39,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(14,22,32,0.16) 1px, transparent 1px), linear-gradient(to bottom, rgba(14,22,32,0.16) 1px, transparent 1px)",
+            "linear-gradient(to right, color-mix(in srgb, var(--color-ink) 16%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, var(--color-ink) 16%, transparent) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
           maskImage:
             "radial-gradient(ellipse 55% 100% at 0% 50%, #000 40%, transparent 75%), radial-gradient(ellipse 55% 100% at 100% 50%, #000 40%, transparent 75%)",
@@ -54,9 +54,9 @@ export default function Hero() {
       <Noise patternAlpha={28} patternRefreshInterval={2} tone="dark" />
       {/* Crosshair guides */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[8%] top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, transparent, rgba(14,22,32,0.18) 12%, rgba(14,22,32,0.18) 88%, transparent)" }} />
-        <div className="absolute right-[8%] top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, transparent, rgba(88,174,195,0.45) 12%, rgba(88,174,195,0.45) 88%, transparent)" }} />
-        <div className="absolute left-0 right-0 top-[42%] h-px" style={{ background: "linear-gradient(to right, transparent, rgba(14,22,32,0.12) 10%, rgba(14,22,32,0.12) 90%, transparent)" }} />
+        <div className="absolute left-[8%] top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-ink) 18%, transparent) 12%, color-mix(in srgb, var(--color-ink) 18%, transparent) 88%, transparent)" }} />
+        <div className="absolute right-[8%] top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-cyan-500) 45%, transparent) 12%, color-mix(in srgb, var(--color-cyan-500) 45%, transparent) 88%, transparent)" }} />
+        <div className="absolute left-0 right-0 top-[42%] h-px" style={{ background: "linear-gradient(to right, transparent, color-mix(in srgb, var(--color-ink) 12%, transparent) 10%, color-mix(in srgb, var(--color-ink) 12%, transparent) 90%, transparent)" }} />
       </div>
 
       <div className="scanlines absolute inset-0" aria-hidden />
@@ -165,7 +165,7 @@ export default function Hero() {
               <a href="#projects" className="btn-ghost" style={{ padding: "0.6rem 1rem", fontSize: "13px" }}>View Projects</a>
 
               {/* Tech-stack strip — inline, desktop only */}
-              <div className="ml-1 hidden md:flex flex-wrap items-center gap-x-4 gap-y-1 pl-3 border-l" style={{ borderColor: "rgba(14,22,32,0.4)" }}>
+              <div className="ml-1 hidden md:flex flex-wrap items-center gap-x-4 gap-y-1 pl-3 border-l" style={{ borderColor: "color-mix(in srgb, var(--color-ink) 40%, transparent)" }}>
                 {["React", "Next", "TS", "Tailwind", "Motion", "Node"].map((tech) => (
                   <span key={tech} className="font-mono text-[12px] uppercase tracking-[0.1em] text-ink flex items-center gap-1.5 font-semibold">
                     <span className="inline-block h-1 w-1 rotate-45 bg-orange-500" />

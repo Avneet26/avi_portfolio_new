@@ -60,10 +60,10 @@ export default function Blogs() {
           {/* Left — pitch + reasons to come back */}
           <div className="lg:col-span-7">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-              transition={{ duration: 0.45, ease }}
+              viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+              transition={{ duration: 0.28, ease }}
               className="border-2 border-ink bg-paper-elev p-5 lg:p-6 relative"
               style={{ boxShadow: "4px 4px 0 0 var(--color-ink)" }}
             >
@@ -113,10 +113,10 @@ export default function Blogs() {
           {/* Right — queued topics list */}
           <aside className="lg:col-span-5">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-              transition={{ duration: 0.45, ease, delay: 0.1 }}
+              viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+              transition={{ duration: 0.28, ease, delay: 0.06 }}
               className="border-2 border-ink bg-paper-elev relative"
               style={{ boxShadow: "4px 4px 0 0 var(--color-ink)" }}
             >
@@ -133,10 +133,10 @@ export default function Blogs() {
                 {queue.map((q, i) => (
                   <motion.li
                     key={q.title}
-                    initial={{ opacity: 0, x: -8 }}
+                    initial={{ opacity: 0, x: -5 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.35, ease, delay: 0.15 + i * 0.04 }}
+                    transition={{ duration: 0.22, ease, delay: 0.06 + i * 0.025 }}
                     className={`px-5 py-3 flex items-start gap-3 ${i !== queue.length - 1 ? "border-b border-ink/15" : ""}`}
                   >
                     <span className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-ink-soft font-semibold pt-1 w-6 shrink-0">

@@ -18,18 +18,18 @@ const abTools = ["ABTasty", "Optimizely", "Convert", "VWO", "Google Optimize"];
 const ease = [0.2, 0.8, 0.2, 1] as const;
 
 const item = {
-  hidden: { y: 16, opacity: 0 },
-  show:   { y: 0,  opacity: 1, transition: { duration: 0.48, ease } },
+  hidden: { y: 10, opacity: 0 },
+  show:   { y: 0,  opacity: 1, transition: { duration: 0.3, ease } },
 };
 
 const leftContainer = {
   hidden: {},
-  show:   { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show:   { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
 };
 
 const rightContainer = {
   hidden: {},
-  show:   { transition: { staggerChildren: 0.08, delayChildren: 0.35 } },
+  show:   { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
 };
 
 export default function About() {
@@ -65,7 +65,7 @@ export default function About() {
           lineHeight: 0.78,
           letterSpacing: "-0.06em",
           color: "transparent",
-          WebkitTextStroke: "1.5px rgba(14,22,32,0.10)",
+          WebkitTextStroke: "1.5px color-mix(in srgb, var(--color-ink) 10%, transparent)",
           fontVariationSettings: '"wdth" 72',
         }}
       >
@@ -89,7 +89,7 @@ export default function About() {
           <span
             key={i}
             className="block w-2 h-2 rounded-full"
-            style={{ background: "var(--color-paper)", boxShadow: "inset 0 0 0 1px rgba(14,22,32,0.35)" }}
+            style={{ background: "var(--color-paper)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--color-ink) 35%, transparent)" }}
           />
         ))}
       </div>
@@ -106,7 +106,7 @@ export default function About() {
           fontSize: "10px",
           letterSpacing: "0.28em",
           textTransform: "uppercase",
-          background: "rgba(255,255,255,0.4)",
+          background: "color-mix(in srgb, var(--color-paper) 40%, transparent)",
         }}
       >
         ◆ Operator File ◆
@@ -132,7 +132,7 @@ export default function About() {
             variants={leftContainer}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "0px" }}
           >
             {/* Heading */}
             <motion.div variants={item}>
@@ -219,13 +219,13 @@ export default function About() {
             variants={rightContainer}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "0px" }}
           >
             <motion.div variants={item} className="grid grid-cols-2 gap-3">
               {stats.map((s) => (
                 <div
                   key={s.k}
-                  className="border p-4 hover:bg-cyan-50/60 transition-colors backdrop-blur-md bg-white/55"
+                  className="border p-4 hover:bg-cyan-50/60 transition-colors backdrop-blur-md bg-card"
                   style={{ borderColor: "var(--color-ink)" }}
                 >
                   <div className="font-mono text-[11.5px] text-ink-soft uppercase tracking-[0.12em] font-semibold">{s.k}</div>
@@ -234,7 +234,7 @@ export default function About() {
               ))}
             </motion.div>
 
-            <motion.div variants={item} className="mt-6 border p-5 backdrop-blur-md bg-white/55" style={{ borderColor: "var(--color-ink)" }}>
+            <motion.div variants={item} className="mt-6 border p-5 backdrop-blur-md bg-card" style={{ borderColor: "var(--color-ink)" }}>
               <div className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-soft font-semibold mb-4">// Specialisation</div>
               <div className="space-y-3">
                 {[
@@ -258,7 +258,7 @@ export default function About() {
             </motion.div>
 
             {/* Status strip */}
-            <motion.div variants={item} className="mt-3 border p-4 flex items-center justify-between backdrop-blur-md bg-white/55" style={{ borderColor: "var(--color-ink)" }}>
+            <motion.div variants={item} className="mt-3 border p-4 flex items-center justify-between backdrop-blur-md bg-card" style={{ borderColor: "var(--color-ink)" }}>
               <div>
                 <div className="font-mono text-[11.5px] uppercase tracking-[0.14em] text-ink-soft font-semibold">Current status</div>
                 <div className="font-display text-[17px] font-black uppercase text-ink mt-1 leading-tight">Full-time · OptiPhoenix</div>

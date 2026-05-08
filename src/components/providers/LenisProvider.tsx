@@ -5,6 +5,9 @@ import Lenis from "lenis";
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Touch devices have native momentum scroll — Lenis competes with it and causes jank
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
+
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,

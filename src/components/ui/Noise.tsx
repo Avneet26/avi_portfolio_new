@@ -60,7 +60,10 @@ export default function Noise({
       raf = requestAnimationFrame(loop);
     };
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const noAnimate =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    if (noAnimate) {
       drawGrain();
     } else {
       loop();

@@ -110,10 +110,10 @@ function SubsectionLabel({ label, meta }: { label: string; meta: string }) {
 function LiveProjectCard({ project, index }: { project: LiveProject; index: number }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-15% 0px -10% 0px" }}
-      transition={{ duration: 0.5, ease, delay: index * 0.08 }}
+      viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+      transition={{ duration: 0.32, ease, delay: index * 0.05 }}
       className="group relative border-2 border-ink bg-paper overflow-hidden"
       style={{ boxShadow: "4px 4px 0 0 var(--color-ink)" }}
     >
@@ -228,10 +228,10 @@ function FunProjectCard({ project, index }: { project: FunProject; index: number
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-15% 0px -10% 0px" }}
-      transition={{ duration: 0.45, ease, delay: index * 0.06 }}
+      viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+      transition={{ duration: 0.28, ease, delay: index * 0.04 }}
       whileHover={{ y: -3 }}
       className="group relative border-2 border-ink bg-paper flex flex-col"
       style={{ boxShadow: "3px 3px 0 0 var(--color-ink)" }}
