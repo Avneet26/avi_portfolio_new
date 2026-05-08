@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
+import MotionProvider from "@/components/providers/MotionProvider";
 import Crosshair from "@/components/ui/Crosshair";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 const body = Space_Grotesk({
@@ -63,8 +64,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <LenisProvider>{children}</LenisProvider>
-          <Crosshair />
+          <MotionProvider>
+            <LenisProvider>{children}</LenisProvider>
+            <Crosshair />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>
