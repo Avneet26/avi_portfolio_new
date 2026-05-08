@@ -3,6 +3,7 @@
 import { useState } from "react";
 import BlockHeading from "@/components/ui/BlockHeading";
 import { profile, openToWork } from "@/lib/profile";
+import SocialLinks from "@/components/ui/SocialLinks";
 
 type Status =
   | { kind: "idle" }
@@ -34,9 +35,11 @@ export default function Contact() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        const message =
-          (data && typeof data.error === "string" && data.error) ||
-          "Couldn't send right now. Try again or email me directly.";
+        const fields: string[] = Array.isArray(data?.fields) ? data.fields : [];
+        const message = fields.length > 0
+          ? `Check these fields: ${fields.join(", ")}`
+          : (typeof data?.error === "string" && data.error) ||
+            "Couldn't send right now. Try again or email me directly.";
         setStatus({ kind: "error", message });
         return;
       }
@@ -54,11 +57,11 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative border-b bg-paper-elev"
+      className="relative border-b bg-cyber-b overflow-hidden"
       style={{ borderColor: "var(--color-ink)" }}
       aria-label="Contact"
     >
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-16 lg:py-20">
+      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-16 lg:py-20">
         {/* Header — match Experience / Freelance / Projects / Blogs */}
         <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
           <div>
@@ -130,6 +133,8 @@ export default function Contact() {
               </li>
             </ul>
 
+            <SocialLinks className="mt-6" variant="chips" />
+
             {/* Decorative coordinate strip */}
             <div className="mt-8 border-t border-ink/30 pt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
               <span className="text-orange-500 font-semibold">▲</span> CHANNEL · OPEN ·{" "}
@@ -139,6 +144,7 @@ export default function Contact() {
 
           {/* Right — form */}
           <form
+            id="contact-form"
             onSubmit={handleSubmit}
             className="lg:col-span-7 border-2 border-ink p-5 lg:p-7 bg-paper space-y-5 relative"
             style={{ boxShadow: "4px 4px 0 0 var(--color-ink)" }}

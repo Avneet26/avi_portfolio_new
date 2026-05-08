@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   const errors: string[] = [];
   if (typeof name !== "string" || name.trim().length < 2) errors.push("name");
   if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("email");
-  if (typeof message !== "string" || message.trim().length < 10) errors.push("message");
+  if (typeof message !== "string" || message.trim().length < 1) errors.push("message");
   if (errors.length) {
     return NextResponse.json({ error: "Validation failed", fields: errors }, { status: 400 });
   }

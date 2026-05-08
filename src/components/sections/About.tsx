@@ -36,73 +36,18 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative border-b overflow-hidden"
-      style={{
-        borderColor: "var(--color-ink)",
-        backgroundColor: "var(--color-paper-elevated)",
-      }}
+      className="relative border-b overflow-hidden bg-cyber-b"
+      style={{ borderColor: "var(--color-ink)" }}
       aria-label="About me"
     >
-      {/* Layer 1: Diagonal pinstripe hatch — sets the dossier rhythm */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(45deg, rgba(14,22,32,0.045) 0 1px, transparent 1px 14px)",
-        }}
-      />
-
-      {/* Layer 2: Counter-diagonal accent hatch (cyan) — depth without noise */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-50"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(-45deg, rgba(43,125,146,0.05) 0 1px, transparent 1px 28px)",
-        }}
-      />
-
-      {/* Layer 3: Top-right halftone radial — cyan scan beam glow */}
-      <div
-        aria-hidden
-        className="absolute -top-40 -right-40 w-[640px] h-[640px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(88,174,195,0.22) 0%, rgba(88,174,195,0.10) 35%, transparent 65%)",
-          maskImage:
-            "radial-gradient(circle, currentColor 1.4px, transparent 1.6px)",
-          WebkitMaskImage:
-            "radial-gradient(circle, currentColor 1.4px, transparent 1.6px)",
-          maskSize: "8px 8px",
-          WebkitMaskSize: "8px 8px",
-        }}
-      />
-
-      {/* Layer 4: Bottom-left halftone radial — orange warm anchor */}
-      <div
-        aria-hidden
-        className="absolute -bottom-32 -left-32 w-[520px] h-[520px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(255,138,71,0.18) 0%, rgba(255,138,71,0.08) 40%, transparent 70%)",
-          maskImage:
-            "radial-gradient(circle, currentColor 1.2px, transparent 1.4px)",
-          WebkitMaskImage:
-            "radial-gradient(circle, currentColor 1.2px, transparent 1.4px)",
-          maskSize: "7px 7px",
-          WebkitMaskSize: "7px 7px",
-        }}
-      />
-
-      {/* Layer 5: SVG paper grain — subtle texture so the hatch doesn't feel digital */}
+      {/* Subtle SVG grain — just enough to keep the cream from feeling digital */}
       <svg
         aria-hidden
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.45] mix-blend-multiply"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.3] mix-blend-multiply"
       >
         <filter id="aboutGrain">
           <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" />
-          <feColorMatrix values="0 0 0 0 0.05  0 0 0 0 0.08  0 0 0 0 0.12  0 0 0 0.18 0" />
+          <feColorMatrix values="0 0 0 0 0.05  0 0 0 0 0.08  0 0 0 0 0.12  0 0 0 0.16 0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#aboutGrain)" />
       </svg>
@@ -221,9 +166,23 @@ export default function About() {
             </div>
 
             {/* Coming soon callout */}
-            <motion.div variants={item} className="mt-6 border-l-2 pl-4 py-1.5" style={{ borderColor: "#f97316" }}>
+            <motion.div variants={item} className="mt-8 max-w-xl border-l-[3px] pl-4 py-2" style={{ borderColor: "#f97316" }}>
               <div className="font-mono text-[12px] uppercase tracking-[0.16em] text-orange-500 mb-1.5 font-semibold">// Coming soon</div>
               <p className="text-ink text-[14.5px] leading-[1.6]">{about.gamedev}</p>
+            </motion.div>
+
+            {/* Say hello CTA */}
+            <motion.div variants={item} className="mt-8 max-w-xl flex items-center justify-between gap-4 pt-6 border-t" style={{ borderColor: "color-mix(in srgb, var(--color-ink) 20%, transparent)" }}>
+              <p className="text-ink-soft text-[14px] leading-[1.55]">
+                Curious about the work, the stack, or just want to connect?
+              </p>
+              <a
+                href="#contact"
+                className="shrink-0 inline-flex items-center gap-2 border-2 border-ink bg-ink text-paper font-mono text-[12px] uppercase tracking-[0.1em] font-semibold px-3.5 py-2 hover:bg-paper hover:text-ink"
+                style={{ transition: "background 160ms ease-out, color 160ms ease-out", boxShadow: "3px 3px 0 0 var(--color-cyan-500)" }}
+              >
+                Say Hello →
+              </a>
             </motion.div>
 
             {/* Tech stack cards */}

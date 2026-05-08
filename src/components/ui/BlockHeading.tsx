@@ -12,7 +12,7 @@ type Props = {
 const sizes = {
   sm: "text-4xl md:text-5xl",
   md: "text-5xl md:text-6xl",
-  lg: "text-5xl md:text-7xl",
+  lg: "text-4xl sm:text-5xl md:text-7xl",
   xl: "text-6xl md:text-8xl lg:text-[10rem]",
 };
 

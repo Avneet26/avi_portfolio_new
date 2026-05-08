@@ -3,13 +3,16 @@
 import { openToWork } from "@/lib/profile";
 
 const baseTokens = [
-  "VISION (00) UNLOCKED",
-  "MODULAR PATTERN",
-  "VS_0151 / EXPRESS",
-  "MHV-RST",
-  "LOC: 35°28′09.2″N",
-  "REL.0884105",
-  "FRONTEND ENGINEER",
+  "SENIOR FRONTEND ENGINEER",
+  "FULL-STACK CAPABLE",
+  "A/B TESTING",
+  "REACT · NEXT.JS · TS",
+  "UI THAT CONVERTS",
+  "SHIPPING SINCE 2021",
+  "AGENTIC CODING",
+  "LOC: 28.61°N · 77.20°E",
+  "4+ YEARS EXP",
+  "TAILWIND · MOTION · NODE",
 ];
 
 const tokens = openToWork ? [...baseTokens, "AVAILABLE FOR WORK"] : baseTokens;

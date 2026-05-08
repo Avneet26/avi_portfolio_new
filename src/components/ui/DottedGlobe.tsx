@@ -88,6 +88,7 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
     const allDots: Dot[] = []
     let landFeatures: any = null
     const rotation: [number, number] = [0, 0]
+    const graticule = d3.geoGraticule()
 
     const render = () => {
       ctx.clearRect(0, 0, w, h)
@@ -110,7 +111,6 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
       if (!landFeatures) return
 
       // Graticule grid
-      const graticule = d3.geoGraticule()
       ctx.beginPath()
       path(graticule())
       ctx.strokeStyle = GRID_STROKE
@@ -140,20 +140,23 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
       })
     }
 
+    const controller = new AbortController()
+    let cancelled = false
+
     const load = async () => {
       try {
         const res = await fetch(
-          "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json"
+          "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json",
+          { signal: controller.signal }
         )
         landFeatures = await res.json()
         landFeatures.features.forEach((f: any) => {
           buildDots(f, 1.4).forEach(([lng, lat]) => allDots.push({ lng, lat }))
         })
-        setReady(true)
-        render()
       } catch {
-        // fail silently — globe still shows with just the grid
-        setReady(true)
+        // fail silently — globe still shows with ocean + grid
+      } finally {
+        if (!cancelled) setReady(true)
       }
     }
 
@@ -165,14 +168,18 @@ export default function DottedGlobe({ width = 600, height = 600, className = "" 
 
     load()
 
-    return () => { timer.stop() }
+    return () => {
+      timer.stop()
+      controller.abort()
+      cancelled = true
+    }
   }, [width, height])
 
   return (
     <canvas
       ref={canvasRef}
       className={className}
-      style={{ maxWidth: "100%", height: "auto", opacity: ready ? 1 : 0, transition: "opacity 0.6s ease" }}
+      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.6s ease" }}
     />
   )
 }

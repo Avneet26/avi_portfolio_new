@@ -11,11 +11,10 @@ export const profile = {
   location: "New Delhi · India",
   email: "avneetvirdi26@gmail.com",
   socials: {
-    github: "https://github.com/",
-    linkedin: "https://linkedin.com/in/",
-    twitter: "https://twitter.com/",
+    github: "https://github.com/Avneet26",
+    linkedin: "https://www.linkedin.com/in/avneet-singh-virdi-652838185/",
   },
-  tagline: "Senior Frontend Engineer specialising in CRO, A/B testing, and UI that actually converts. Based in Delhi — shipping since 2021.",
+  tagline: "CRO experiments across ABTasty, Optimizely, and VWO — shipped for Accor Hotels, Fairmont, Microsoft, Xbox, and Norwegian Airlines. Based in New Delhi.",
 } as const;
 
 export const about = {

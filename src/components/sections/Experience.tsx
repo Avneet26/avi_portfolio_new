@@ -17,20 +17,10 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative border-b bg-paper-elev overflow-hidden"
+      className="relative border-b bg-cyber-a overflow-hidden"
       style={{ borderColor: "var(--color-ink)" }}
       aria-label="Experience"
     >
-      {/* faint grid backdrop */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-ink) 1px, transparent 1px), linear-gradient(90deg, var(--color-ink) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-16 lg:py-20">
         {/* heading row */}
@@ -52,17 +42,17 @@ export default function Experience() {
         </div>
 
         {/* timeline */}
-        <div ref={trackRef} className="relative pl-10 sm:pl-14">
+        <div ref={trackRef} className="relative pl-8 sm:pl-12">
           {/* spine — base */}
           <div
             aria-hidden
-            className="absolute left-3 sm:left-5 top-2 bottom-2 w-px"
+            className="absolute left-[5px] top-2 bottom-2 w-px"
             style={{ background: "color-mix(in srgb, var(--color-ink) 18%, transparent)" }}
           />
           {/* spine — progress */}
           <motion.div
             aria-hidden
-            className="absolute left-3 sm:left-5 top-2 bottom-2 w-[2px] origin-top"
+            className="absolute left-[5px] top-2 bottom-2 w-[2px] origin-top"
             style={{
               scaleY: lineScale,
               background:
@@ -76,6 +66,23 @@ export default function Experience() {
               <Entry key={`${e.company}-${e.period}-${i}`} entry={e} index={i} last={i === experience.length - 1} />
             ))}
           </ol>
+
+          {/* Post-timeline CTA */}
+          <div className="mt-10 pt-7 border-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style={{ borderColor: "color-mix(in srgb, var(--color-ink) 20%, transparent)" }}>
+            <div>
+              <div className="font-mono text-[11.5px] uppercase tracking-[0.15em] text-ink-soft font-semibold mb-1">// Get in touch</div>
+              <p className="text-ink text-[14.5px] leading-[1.5]">
+                Shipped for <span className="font-semibold">Accor Hotels, Microsoft &amp; Xbox</span>. Always up for a good conversation.
+              </p>
+            </div>
+            <a
+              href="#contact"
+              className="shrink-0 inline-flex items-center gap-2 border-2 border-ink bg-ink text-paper font-mono text-[12.5px] uppercase tracking-[0.1em] font-semibold px-4 py-2.5 hover:bg-paper hover:text-ink"
+              style={{ transition: "background 160ms ease-out, color 160ms ease-out", boxShadow: "3px 3px 0 0 var(--color-cyan-500)" }}
+            >
+              Say Hello →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -102,7 +109,7 @@ function Entry({
       className="group relative"
     >
       {/* spine node */}
-      <div className="absolute -left-10 sm:-left-14 top-3 flex items-center gap-2">
+      <div className="absolute -left-8 sm:-left-12 top-3 flex items-center gap-2">
         <motion.span
           className="relative block h-3 w-3 rotate-45 border-2 border-ink bg-paper-elev"
           whileHover={{ scale: 1.3, rotate: 90 }}
@@ -131,8 +138,8 @@ function Entry({
       <motion.article
         whileHover={{ x: 4 }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        className="relative border-2 border-ink bg-paper p-4 lg:p-5"
-        style={{ boxShadow: "3px 3px 0 0 var(--color-ink)" }}
+        className="relative border-2 border-ink p-4 lg:p-5"
+        style={{ background: "#ffffff", boxShadow: "5px 5px 0 0 var(--color-ink)" }}
       >
         {/* corner ticks */}
         <CornerTicks />

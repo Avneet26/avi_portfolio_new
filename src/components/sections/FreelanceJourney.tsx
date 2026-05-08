@@ -13,7 +13,7 @@ export default function FreelanceJourney() {
   return (
     <section
       id="freelance"
-      className="relative border-b overflow-hidden"
+      className="relative border-b overflow-hidden bg-cyber-b"
       style={{ borderColor: "var(--color-ink)" }}
       aria-label="Freelance journey"
     >
@@ -107,6 +107,23 @@ export default function FreelanceJourney() {
             </div>
           </aside>
         </div>
+
+        {/* Post-grid CTA */}
+        <div className="mt-8 pt-7 border-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style={{ borderColor: "color-mix(in srgb, var(--color-ink) 20%, transparent)" }}>
+          <div>
+            <div className="font-mono text-[11.5px] uppercase tracking-[0.15em] text-ink-soft font-semibold mb-1">// Curious about the process?</div>
+            <p className="text-ink text-[14.5px] leading-[1.5]">
+              Happy to talk shop — CRO, web builds, or how any of this came together.
+            </p>
+          </div>
+          <a
+            href="#contact"
+            className="shrink-0 inline-flex items-center gap-2 border-2 border-ink bg-orange-500 text-ink font-mono text-[12.5px] uppercase tracking-[0.1em] font-semibold px-4 py-2.5 hover:bg-ink hover:text-paper"
+            style={{ transition: "background 160ms ease-out, color 160ms ease-out", boxShadow: "3px 3px 0 0 var(--color-ink)" }}
+          >
+            Say Hello →
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -129,46 +146,57 @@ function FreelanceRow({
       transition={{ duration: 0.4, ease, delay: index * 0.05 }}
       className={`relative px-4 sm:px-5 py-4 hover:bg-orange-100/40 ${!last ? "border-b-2 border-ink" : ""}`}
     >
-      <div className="flex items-start gap-3 sm:gap-4">
+      {/* Mobile layout: column, button pinned top-right */}
+      <div className="sm:hidden relative pr-[96px]">
+        <div className="absolute top-0 right-0 flex items-center gap-2">
+          <ActionButton href={item.github} label={`${item.client} GitHub repo`} accent="ink">
+            <GitHubIcon />
+          </ActionButton>
+          <ActionButton href={item.link} label={`Open ${item.client}`} accent="orange">
+            <ExternalIcon />
+          </ActionButton>
+        </div>
+        <div className="flex items-center gap-3 mb-1.5">
+          <span className="font-mono text-[12px] uppercase tracking-[0.1em] text-ink-soft font-semibold w-7 shrink-0">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="font-mono text-[12.5px] uppercase tracking-[0.1em] text-ink font-semibold">
+            {item.year}
+          </span>
+        </div>
+        <div className="font-display text-[22px] uppercase leading-[1.05] text-ink">
+          {item.client}
+        </div>
+        <div className="font-mono text-[12px] uppercase tracking-[0.08em] text-cyan-700 font-semibold mt-2">
+          {item.scope}
+        </div>
+        <div className="text-[13px] text-ink-soft mt-0.5 leading-[1.5]">{item.note}</div>
+      </div>
+
+      {/* sm+ layout: original row */}
+      <div className="hidden sm:flex items-start gap-4">
         <span className="font-mono text-[12px] uppercase tracking-[0.1em] text-ink-soft font-semibold pt-1 w-7 shrink-0">
           {String(index + 1).padStart(2, "0")}
         </span>
         <span className="font-mono text-[12.5px] uppercase tracking-[0.1em] text-ink font-semibold pt-1 w-12 shrink-0">
           {item.year}
         </span>
-
         <div className="min-w-0 flex-1">
-          <div className="font-display text-[22px] sm:text-[24px] uppercase leading-[1.05] text-ink">
+          <div className="font-display text-[24px] uppercase leading-[1.05] text-ink">
             {item.client}
           </div>
-          <div className="mt-1.5 sm:hidden">
-            <div className="font-mono text-[12px] uppercase tracking-[0.08em] text-cyan-700 font-semibold">
-              {item.scope}
-            </div>
-            <div className="text-[12.5px] text-ink-soft mt-0.5 leading-[1.45]">{item.note}</div>
-          </div>
         </div>
-
-        <div className="hidden sm:block w-[34%] pt-1 shrink-0">
+        <div className="w-[34%] pt-1 shrink-0">
           <div className="font-mono text-[12.5px] uppercase tracking-[0.08em] text-cyan-700 font-semibold">
             {item.scope}
           </div>
           <div className="text-[13px] text-ink-soft mt-1 leading-[1.45]">{item.note}</div>
         </div>
-
         <div className="flex items-center justify-end gap-2 shrink-0 pt-0.5 w-[84px]">
-          <ActionButton
-            href={item.github}
-            label={`${item.client} GitHub repo`}
-            accent="ink"
-          >
+          <ActionButton href={item.github} label={`${item.client} GitHub repo`} accent="ink">
             <GitHubIcon />
           </ActionButton>
-          <ActionButton
-            href={item.link}
-            label={`Open ${item.client}`}
-            accent="orange"
-          >
+          <ActionButton href={item.link} label={`Open ${item.client}`} accent="orange">
             <ExternalIcon />
           </ActionButton>
         </div>

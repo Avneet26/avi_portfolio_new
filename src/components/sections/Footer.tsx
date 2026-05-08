@@ -1,4 +1,5 @@
 import { profile } from "@/lib/profile";
+import SocialLinks from "@/components/ui/SocialLinks";
 
 export default function Footer() {
   return (
@@ -20,11 +21,9 @@ export default function Footer() {
           </div>
           <div className="md:col-span-4">
             <div className="font-mono text-[10px] uppercase tracking-widest opacity-60 mb-3">// Channels</div>
+            <SocialLinks className="mb-4" color="paper" />
             <ul className="space-y-2 font-mono text-xs uppercase tracking-widest">
-              <li><a className="hover:text-orange-500" href={profile.socials.github}>GitHub ↗</a></li>
-              <li><a className="hover:text-orange-500" href={profile.socials.linkedin}>LinkedIn ↗</a></li>
-              <li><a className="hover:text-orange-500" href={profile.socials.twitter}>Twitter / X ↗</a></li>
-              <li><a className="hover:text-orange-500" href={`mailto:${profile.email}`}>{profile.email}</a></li>
+              <li><a className="opacity-70 hover:opacity-100 hover:text-orange-500" href={`mailto:${profile.email}`}>{profile.email}</a></li>
             </ul>
           </div>
         </div>

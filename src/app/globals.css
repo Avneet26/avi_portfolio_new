@@ -43,15 +43,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  body {
-    /* Layered grid + halftone backdrop */
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(14,22,32,0.08) 1px, transparent 0),
-      linear-gradient(rgba(88,174,195,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(88,174,195,0.06) 1px, transparent 1px);
-    background-size: 4px 4px, 56px 56px, 56px 56px;
-    background-position: 0 0, 0 0, 0 0;
-  }
+  /* Body bg pattern lives on the section utilities (.bg-cyber-a / .bg-cyber-b)
+     so the rhythm is deterministic per section, not leaked through gaps. */
 
   ::selection { background: var(--color-orange-500); color: var(--color-paper); }
 
@@ -82,6 +75,53 @@
   .bg-orange-500   { background-color: var(--color-orange-500); }
   .bg-orange-100   { background-color: var(--color-orange-100); }
   .bg-ink          { background-color: var(--color-ink); }
+
+  /* === Section background system ===
+     Strict A/B alternation across the page. Both surfaces share the
+     same cyan-tinted dot+grid primitives so transitions feel intentional,
+     not random. Type A is the base "field"; Type B is the lifted "register". */
+
+  /* Type A — FIELD: warm paper + cyan grid intersected with ink dot dust */
+  .bg-cyber-a {
+    background-color: var(--color-paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(14,22,32,0.07) 1px, transparent 0),
+      linear-gradient(rgba(88,174,195,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88,174,195,0.07) 1px, transparent 1px);
+    background-size: 4px 4px, 56px 56px, 56px 56px;
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  /* Type B — REGISTER: cream paper-elev + 45° hatch + offset dot register */
+  .bg-cyber-b {
+    background-color: var(--color-paper-elevated);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(14,22,32,0.04) 0 1px, transparent 1px 14px),
+      radial-gradient(circle at 8px 8px, rgba(14,22,32,0.05) 0.9px, transparent 1.2px),
+      linear-gradient(rgba(43,125,146,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(43,125,146,0.04) 1px, transparent 1px);
+    background-size: auto, 16px 16px, 56px 56px, 56px 56px;
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  /* Section transition strip — tiny cyan barcode tape just under top ink rule.
+     Apply with `.section-tape` on a section element that already has border-t. */
+  .section-tape {
+    position: relative;
+  }
+  .section-tape::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--color-cyan-500) 0 6px,
+      transparent 6px 18px
+    );
+    opacity: 0.28;
+    pointer-events: none;
+  }
   .border-ink      { border-color: var(--color-ink); }
   .border-rule     { border-color: var(--color-rule); }
 
@@ -221,8 +261,9 @@
   .nav-indicator::before { left: -2px; }
   .nav-indicator::after  { right: -2px; }
 
-  /* Custom crosshair cursor */
+  /* Custom crosshair cursor — hidden by default, only shown on real pointer devices */
   .crosshair-root {
+    display: none;
     position: fixed;
     inset: 0;
     pointer-events: none;
@@ -266,6 +307,7 @@
   @media (hover: hover) and (pointer: fine) {
     html, body { cursor: none; }
     a, button, [role="button"], input, textarea, select, label, summary { cursor: none; }
+    .crosshair-root { display: block; }
   }
   @media (prefers-reduced-motion: reduce) {
     .crosshair-ring svg { animation: none; }

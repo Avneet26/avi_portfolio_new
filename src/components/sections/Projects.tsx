@@ -11,7 +11,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative border-b bg-paper-elev"
+      className="relative border-b bg-cyber-a overflow-hidden"
       style={{ borderColor: "var(--color-ink)" }}
       aria-label="Projects"
     >
@@ -23,7 +23,7 @@ export default function Projects() {
               05 / Selected Builds
             </div>
             <BlockHeading as="h2" size="lg">
-              Projects<span className="text-orange-500">/</span>Personal
+              Projects<span className="text-orange-500">/</span><br className="lg:hidden" />Personal
             </BlockHeading>
           </div>
           <motion.a

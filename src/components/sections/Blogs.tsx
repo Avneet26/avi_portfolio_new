@@ -18,20 +18,10 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="relative border-b overflow-hidden bg-paper"
+      className="relative border-b overflow-hidden bg-cyber-a"
       style={{ borderColor: "var(--color-ink)" }}
       aria-label="Dev logs and blogs — coming soon"
     >
-      {/* Faint grid backdrop matching Experience */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-ink) 1px, transparent 1px), linear-gradient(90deg, var(--color-ink) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
       <div className="scanlines absolute inset-0 pointer-events-none" aria-hidden />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10 py-16 lg:py-20">
