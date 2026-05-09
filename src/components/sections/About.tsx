@@ -40,18 +40,6 @@ export default function About() {
       style={{ borderColor: "var(--color-ink)" }}
       aria-label="About me"
     >
-      {/* Subtle SVG grain — just enough to keep the cream from feeling digital */}
-      <svg
-        aria-hidden
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.3] mix-blend-multiply"
-      >
-        <filter id="aboutGrain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" />
-          <feColorMatrix values="0 0 0 0 0.05  0 0 0 0 0.08  0 0 0 0 0.12  0 0 0 0.16 0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#aboutGrain)" />
-      </svg>
-
       {/* Layer 6: Massive decorative "02" — file folder tab */}
       <div
         aria-hidden
@@ -225,7 +213,7 @@ export default function About() {
               {stats.map((s) => (
                 <div
                   key={s.k}
-                  className="border p-4 hover:bg-cyan-50/60 transition-colors backdrop-blur-md bg-card"
+                  className="border p-4 hover:bg-cyan-50/60 transition-colors bg-paper-elev"
                   style={{ borderColor: "var(--color-ink)" }}
                 >
                   <div className="font-mono text-[11.5px] text-ink-soft uppercase tracking-[0.12em] font-semibold">{s.k}</div>
@@ -234,7 +222,7 @@ export default function About() {
               ))}
             </motion.div>
 
-            <motion.div variants={item} className="mt-6 border p-5 backdrop-blur-md bg-card" style={{ borderColor: "var(--color-ink)" }}>
+            <motion.div variants={item} className="mt-6 border p-5 bg-paper-elev" style={{ borderColor: "var(--color-ink)" }}>
               <div className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-soft font-semibold mb-4">// Specialisation</div>
               <div className="space-y-3">
                 {[
@@ -258,7 +246,7 @@ export default function About() {
             </motion.div>
 
             {/* Status strip */}
-            <motion.div variants={item} className="mt-3 border p-4 flex items-center justify-between backdrop-blur-md bg-card" style={{ borderColor: "var(--color-ink)" }}>
+            <motion.div variants={item} className="mt-3 border p-4 flex items-center justify-between bg-paper-elev" style={{ borderColor: "var(--color-ink)" }}>
               <div>
                 <div className="font-mono text-[11.5px] uppercase tracking-[0.14em] text-ink-soft font-semibold">Current status</div>
                 <div className="font-display text-[17px] font-black uppercase text-ink mt-1 leading-tight">Full-time · OptiPhoenix</div>

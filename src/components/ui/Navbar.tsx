@@ -125,10 +125,10 @@ export default function Navbar() {
 
   return (
     <div
-      className="border-b border-t backdrop-blur"
+      className="border-b border-t"
       style={{
         borderColor: "var(--color-ink)",
-        background: "color-mix(in oklab, var(--color-paper) 88%, transparent)",
+        background: "var(--color-paper)",
       }}
     >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-2">

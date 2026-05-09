@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import DottedGlobe from "@/components/ui/DottedGlobe";
 import IDCard from "@/components/ui/IDCard";
-import Noise from "@/components/ui/Noise";
 import { profile, openToWork } from "@/lib/profile";
 import SocialLinks from "@/components/ui/SocialLinks";
 
@@ -50,8 +49,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Filmic grain — strong, like the reference */}
-      <Noise patternAlpha={28} patternRefreshInterval={2} tone="dark" />
       {/* Crosshair guides */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute left-[8%] top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-ink) 18%, transparent) 12%, color-mix(in srgb, var(--color-ink) 18%, transparent) 88%, transparent)" }} />
@@ -150,7 +147,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <div className="mt-6 lg:mt-10 xl:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 max-w-2xl xl:max-w-3xl">
+            <div className="mt-6 lg:mt-10 xl:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 max-w-2xl xl:max-w-3xl bg-[color-mix(in_srgb,var(--color-paper-elevated)_78%,transparent)] border border-[color-mix(in_srgb,var(--color-ink)_14%,transparent)] px-4 py-4 lg:bg-transparent lg:border-0 lg:p-0">
               <p className="text-ink leading-[1.65] text-[15px] md:text-[15px] xl:text-[17px]">
                 <span className="font-semibold">{profile.role}</span> at <span className="font-semibold">{profile.company}</span>.{" "}
                 <span className="text-ink-soft">{profile.yearsExperience}+ years building pixel-precise, production-grade web products.</span>
