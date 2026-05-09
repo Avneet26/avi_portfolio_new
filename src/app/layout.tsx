@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
 import MotionProvider from "@/components/providers/MotionProvider";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Crosshair />
           </MotionProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
