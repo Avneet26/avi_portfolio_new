@@ -14,7 +14,6 @@ export default function Crosshair() {
   const trailRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
     const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };

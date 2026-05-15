@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { FormEvent } from "react";
 import BlockHeading from "@/components/ui/BlockHeading";
 import { profile, openToWork } from "@/lib/profile";
 import SocialLinks from "@/components/ui/SocialLinks";
@@ -14,7 +15,7 @@ type Status =
 export default function Contact() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus({ kind: "sending" });
     const form = e.currentTarget;

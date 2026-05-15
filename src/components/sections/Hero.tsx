@@ -148,11 +148,11 @@ export default function Hero() {
             </motion.div>
 
             <div className="mt-6 lg:mt-10 xl:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 max-w-2xl xl:max-w-3xl bg-[color-mix(in_srgb,var(--color-paper-elevated)_78%,transparent)] border border-[color-mix(in_srgb,var(--color-ink)_14%,transparent)] px-4 py-4 lg:bg-transparent lg:border-0 lg:p-0">
-              <p className="text-ink leading-[1.65] text-[15px] md:text-[15px] xl:text-[17px]">
+              <p className="text-ink leading-[1.65] text-[15px] xl:text-[17px]">
                 <span className="font-semibold">{profile.role}</span> at <span className="font-semibold">{profile.company}</span>.{" "}
-                <span className="text-ink-soft">{profile.yearsExperience}+ years building pixel-precise, production-grade web products.</span>
+                <span className="text-ink-soft">{profile.yearsExperience} years building pixel-precise, production-grade web products.</span>
               </p>
-              <p className="text-ink-soft leading-[1.65] text-[15px] md:text-[15px] xl:text-[17px]">
+              <p className="text-ink-soft leading-[1.65] text-[15px] xl:text-[17px]">
                 {profile.tagline}
               </p>
             </div>
@@ -237,16 +237,18 @@ export default function Hero() {
 function CornerBrackets() {
   const stroke = "var(--color-ink)";
   const size = 18;
+  const bracketPaths = [
+    ["top-0 left-0", `M0 ${size} V0 H${size}`],
+    ["top-0 right-0", `M${24 - size} 0 H24 V${size}`],
+    ["bottom-0 left-0", `M0 ${24 - size} V24 H${size}`],
+    ["bottom-0 right-0", `M${24 - size} 24 H24 V${24 - size}`],
+  ] as const;
+
   return (
     <div aria-hidden className="absolute inset-3 lg:inset-5 pointer-events-none">
-      {([
-        ["top-0 left-0", `M0 ${size} V0 H${size}`],
-        ["top-0 right-0", `M${24 - size} 0 H24 V${size}`, "rotate(0)"],
-        ["bottom-0 left-0", `M0 ${24 - size} V24 H${size}`],
-        ["bottom-0 right-0", `M${24 - size} 24 H24 V${24 - size}`],
-      ] as const).map(([pos, d]) => (
+      {bracketPaths.map(([pos, d]) => (
         <svg key={pos} className={`absolute ${pos}`} width="22" height="22" viewBox="0 0 24 24">
-          <path d={d as string} fill="none" stroke={stroke} strokeWidth="1.5" />
+          <path d={d} fill="none" stroke={stroke} strokeWidth="1.5" />
         </svg>
       ))}
     </div>

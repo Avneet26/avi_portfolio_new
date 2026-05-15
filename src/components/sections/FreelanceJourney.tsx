@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import BlockHeading from "@/components/ui/BlockHeading";
 import HalftoneGrid from "@/components/ui/HalftoneGrid";
 import { freelance } from "@/lib/profile";
@@ -214,7 +215,7 @@ function ActionButton({
   href?: string;
   label: string;
   accent: "ink" | "orange";
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   if (!href) return null;
   const fillClass =

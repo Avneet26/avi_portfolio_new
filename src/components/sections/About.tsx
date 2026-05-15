@@ -9,7 +9,6 @@ const stats = [
   { k: "Role", v: "Sr. FE" },
   { k: "Degree", v: "B.Tech" },
   { k: "Base", v: "Delhi · IN" },
-  { k: "Roamed", v: "IN · TH · CA" },
   { k: "Coffee/day", v: "3.0" },
 ];
 

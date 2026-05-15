@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import type { ReactNode } from "react";
 import Lenis from "lenis";
 
-export default function LenisProvider({ children }: { children: React.ReactNode }) {
+export default function LenisProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Touch devices have native momentum scroll — Lenis competes with it and causes jank
     if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;

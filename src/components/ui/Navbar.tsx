@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { MouseEvent as ReactMouseEvent } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 const SECTIONS = [
@@ -27,7 +28,7 @@ function scrollToSection(id: string) {
   } else {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-  if (history.replaceState) history.replaceState(null, "", `#${id}`);
+  history.replaceState(null, "", `#${id}`);
 }
 
 function SunIcon({ size = 11 }: { size?: number }) {
@@ -62,7 +63,7 @@ export default function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleClick = (e: ReactMouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     scrollToSection(id);
     setMenuOpen(false);

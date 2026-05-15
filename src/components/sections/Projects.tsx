@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import BlockHeading from "@/components/ui/BlockHeading";
 import { liveProjects, projects, type LiveProject, type FunProject } from "@/lib/profile";
 
@@ -23,7 +24,7 @@ export default function Projects() {
               05 / Selected Builds
             </div>
             <BlockHeading as="h2" size="lg">
-              Projects<span className="text-orange-500">/</span><br className="lg:hidden" />Personal
+              Projects<span className="text-orange-500">/</span><br />Personal
             </BlockHeading>
           </div>
           <motion.a
@@ -350,7 +351,7 @@ function ActionLink({
   label: string;
   variant: "solid" | "ghost";
   small?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const solid = "bg-orange-500 text-ink hover:bg-orange-300";
   const ghost = "bg-paper text-ink hover:bg-cyan-100";
