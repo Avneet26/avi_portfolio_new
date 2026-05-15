@@ -6,6 +6,7 @@ import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
 import MotionProvider from "@/components/providers/MotionProvider";
 import Crosshair from "@/components/ui/Crosshair";
+import IntroGate from "@/components/ui/IntroGate";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 const body = Space_Grotesk({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet" />
       </head>
       <body>
+        <IntroGate />
         <ThemeProvider>
           <MotionProvider>
             <LenisProvider>{children}</LenisProvider>
