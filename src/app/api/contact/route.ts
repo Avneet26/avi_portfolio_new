@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit } from "@/lib/security/rate-limit";
+import {
+  getClientIp,
+  isAllowedOrigin,
+  MIN_FORM_READY_MS,
+} from "@/lib/security/request";
 
 export const runtime = "nodejs";
 
@@ -16,6 +22,22 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(req: Request) {
+  if (!isAllowedOrigin(req)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  const ip = getClientIp(req);
+  const limited = rateLimit(`contact:${ip}`, 5, 15 * 60 * 1000);
+  if (!limited.ok) {
+    return NextResponse.json(
+      { error: "Too many requests. Try again later." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(limited.retryAfterSec) },
+      },
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -23,10 +45,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { name, email, message, website } = (body as Record<string, unknown>) || {};
+  const { name, email, message, website, formReadyMs } =
+    (body as Record<string, unknown>) || {};
 
   // Honeypot — silently succeed if filled (bot)
   if (typeof website === "string" && website.trim().length > 0) {
+    return NextResponse.json({ ok: true });
+  }
+
+  // Timing honeypot — reject instant submissions (bots)
+  if (
+    typeof formReadyMs !== "number" ||
+    !Number.isFinite(formReadyMs) ||
+    formReadyMs < MIN_FORM_READY_MS
+  ) {
     return NextResponse.json({ ok: true });
   }
 

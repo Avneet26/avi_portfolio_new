@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { FormEvent } from "react";
 import BlockHeading from "@/components/ui/BlockHeading";
 import { profile, openToWork } from "@/lib/profile";
@@ -14,6 +14,7 @@ type Status =
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const formReadyAt = useRef(Date.now());
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,6 +26,7 @@ export default function Contact() {
       email: String(fd.get("email") ?? ""),
       message: String(fd.get("message") ?? ""),
       website: String(fd.get("website") ?? ""), // honeypot
+      formReadyMs: Date.now() - formReadyAt.current,
     };
 
     try {
