@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Stage = "boot" | "opening" | "done";
 
@@ -10,12 +11,18 @@ const SAFETY_MS = 240;
 const REDUCED_MS = 240;
 
 export default function IntroGate() {
+  const pathname = usePathname();
   const [stage, setStage] = useState<Stage>("boot");
   const leftGateRef = useRef<HTMLDivElement | null>(null);
   const previousOverflowRef = useRef<string | null>(null);
 
+  // Skip splash entirely on standalone routes (e.g. /resume) where the
+  // visitor likely arrived for a single document and not the homepage.
+  const skip = pathname?.startsWith("/resume") ?? false;
+
   // Stage 1 — schedule the gate-open from "boot"
   useEffect(() => {
+    if (skip) return;
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -28,10 +35,11 @@ export default function IntroGate() {
     return () => {
       window.clearTimeout(tOpen);
     };
-  }, []);
+  }, [skip]);
 
   // Lock scrolling while splash is visible, and always restore previous style.
   useEffect(() => {
+    if (skip) return;
     if (previousOverflowRef.current === null) {
       previousOverflowRef.current = document.body.style.overflow;
     }
@@ -42,7 +50,7 @@ export default function IntroGate() {
     }
 
     document.body.style.overflow = "hidden";
-  }, [stage]);
+  }, [stage, skip]);
 
   useEffect(() => {
     return () => {
@@ -55,6 +63,7 @@ export default function IntroGate() {
   // Stage 2 — unmount when the slide actually finishes (transitionend),
   // with a generous safety timer so we never unmount mid-animation.
   useEffect(() => {
+    if (skip) return;
     if (stage !== "opening") return;
 
     const reduced =
@@ -78,9 +87,9 @@ export default function IntroGate() {
       window.clearTimeout(fallback);
       node?.removeEventListener("transitionend", onEnd);
     };
-  }, [stage]);
+  }, [stage, skip]);
 
-  if (stage === "done") return null;
+  if (skip || stage === "done") return null;
 
   return (
     <div className="intro-gate" data-stage={stage} aria-hidden="true">

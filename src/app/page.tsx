@@ -9,6 +9,7 @@ import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import TopTape from "@/components/ui/TopTape";
 import Navbar from "@/components/ui/Navbar";
+import ResumeBreaker from "@/components/ui/ResumeBreaker";
 
 export default function Page() {
   return (
@@ -20,8 +21,44 @@ export default function Page() {
       <Hero />
       <About />
       <Experience />
+
+      {/* Breaker — after the career timeline, when recruiters are warmest */}
+      <section
+        aria-label="Download resume"
+        className="border-b bg-cyber-b"
+        style={{ borderColor: "var(--color-ink)" }}
+      >
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-14 lg:py-16">
+          <ResumeBreaker
+            code="REQ-01"
+            label="// Recruiter brief"
+            headline="Like the career log? Take the file."
+            sub="Single page · A4 · Updated 2026 · Open to remote and relocation."
+            variant="orange"
+          />
+        </div>
+      </section>
+
       <FreelanceJourney />
       <Projects />
+
+      {/* Breaker — after the project showcase, framed as a follow-up CTA */}
+      <section
+        aria-label="Download resume"
+        className="border-b bg-cyber-a"
+        style={{ borderColor: "var(--color-ink)" }}
+      >
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-14 lg:py-16">
+          <ResumeBreaker
+            code="REQ-02"
+            label="// Hiring signal"
+            headline="Need the formal one-pager?"
+            sub="The same story in a clean, forwardable PDF."
+            variant="cyan"
+          />
+        </div>
+      </section>
+
       <Education />
       <Blogs />
       <Contact />

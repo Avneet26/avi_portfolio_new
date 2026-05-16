@@ -489,6 +489,85 @@
   .bg-card {
     background: color-mix(in srgb, var(--color-paper-elevated) 75%, transparent);
   }
+
+  /* Hero resume CTA — sits below social chips in right column */
+  .hero-resume-cta {
+    display: flex;
+    position: relative;
+    margin-top: 14px;
+    padding: 12px 14px 12px 12px;
+    align-items: center;
+    gap: 12px;
+    border: 1.5px solid var(--color-ink);
+    background: var(--color-paper-elevated);
+    box-shadow: 4px 4px 0 0 var(--color-ink);
+    text-decoration: none;
+    color: var(--color-ink);
+    transition:
+      transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      background 140ms ease;
+  }
+  .hero-resume-cta:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 0 var(--color-ink);
+    background: color-mix(in srgb, var(--color-orange-500) 12%, var(--color-paper-elevated));
+  }
+  .hero-resume-cta:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 0 var(--color-ink);
+  }
+  .hero-resume-cta-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    background: var(--color-orange-500);
+    border: 1.5px solid var(--color-ink);
+    flex-shrink: 0;
+  }
+  .hero-resume-cta-diamond {
+    width: 5px;
+    height: 5px;
+    background: var(--color-ink);
+    transform: rotate(45deg);
+    display: inline-block;
+  }
+  .hero-resume-cta-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+  }
+  .hero-resume-cta-headline {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.2;
+  }
+  .hero-resume-cta-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-ink-soft);
+  }
+  .hero-resume-cta-arrow {
+    font-size: 16px;
+    color: var(--color-ink);
+    flex-shrink: 0;
+  }
+  .hero-resume-cta:hover .hero-resume-cta-arrow {
+    color: var(--color-orange-700);
+  }
   /* Stat card hover in dark: subtle cyan-tinted surface */
   [data-theme="dark"] .hover\:bg-cyan-50\/60:hover {
     background-color: color-mix(in srgb, var(--color-cyan-500) 10%, var(--color-paper-elevated)) !important;

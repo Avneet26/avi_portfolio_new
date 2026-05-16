@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import DottedGlobe from "@/components/ui/DottedGlobe";
 import IDCard from "@/components/ui/IDCard";
 import { profile, openToWork } from "@/lib/profile";
@@ -175,6 +176,7 @@ export default function Hero() {
             {/* Social links — visible on mobile below CTA, hidden on desktop (shown in right col) */}
             <div className="lg:hidden">
               <SocialLinks className="mt-4" variant="chips" />
+              <HeroResumeCta className="mt-4 w-full" />
             </div>
           </div>
 
@@ -208,6 +210,9 @@ export default function Hero() {
             <div className="hidden lg:block">
               <SocialLinks className="mt-4" variant="chips" />
             </div>
+
+            {/* Resume CTA — quick path to the formal one-pager */}
+            <HeroResumeCta className="hidden lg:flex w-full" />
           </div>
         </div>
 
@@ -231,6 +236,32 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroResumeCta({ className = "" }: { className?: string }) {
+  return (
+    <Link
+      href="/resume"
+      className={`hero-resume-cta ${className}`.trim()}
+      aria-label="View resume"
+    >
+      <span className="hero-resume-cta-tab">
+        <span className="hero-resume-cta-diamond" aria-hidden />
+        RESUME · ASV-26
+      </span>
+      <span className="hero-resume-cta-body">
+        <span className="hero-resume-cta-headline">
+          View / Download Resume
+        </span>
+        <span className="hero-resume-cta-meta">
+          A4 · PDF · 1 page · Updated 2026
+        </span>
+      </span>
+      <span className="hero-resume-cta-arrow" aria-hidden>
+        ↗
+      </span>
+    </Link>
   );
 }
 

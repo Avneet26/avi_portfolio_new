@@ -7,7 +7,11 @@ import LenisProvider from "@/components/providers/LenisProvider";
 import MotionProvider from "@/components/providers/MotionProvider";
 import Crosshair from "@/components/ui/Crosshair";
 import IntroGate from "@/components/ui/IntroGate";
+import ResumeBarRouted from "@/components/ui/ResumeBarRouted";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
+const ENABLE_SPLASH = false;
+
 const body = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-body-google",
@@ -20,7 +24,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://avneetvirdi.dev"),
+  metadataBase: new URL("https://avneetvirdi.com"),
   title: {
     default: "Avneet Singh Virdi — Senior Frontend Engineer",
     template: "%s | Avneet Singh Virdi",
@@ -66,11 +70,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link href="https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <IntroGate />
+        {ENABLE_SPLASH ? <IntroGate /> : null}
         <ThemeProvider>
           <MotionProvider>
             <LenisProvider>{children}</LenisProvider>
             <Crosshair />
+            <ResumeBarRouted />
           </MotionProvider>
         </ThemeProvider>
         <Analytics />
