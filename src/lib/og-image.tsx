@@ -218,13 +218,13 @@ export async function generateOgImage() {
               fontFamily: "Display",
             }}
           >
-            React · Next.js · TypeScript — CRO for Accor, Microsoft, Xbox · 4+ years shipping
-            production web
+            React · Next.js · TypeScript — frontend for CRO clients: Accor, Microsoft, Xbox ·
+            4+ years shipping production web
           </div>
 
           {/* Tech chips */}
           <div style={{ display: "flex", gap: 10, marginTop: 28, flexWrap: "wrap" }}>
-            {["React", "Next.js", "TypeScript", "CRO", "OptiPhoenix"].map((tag) => (
+            {["React", "Next.js", "TypeScript", "A/B Testing", "OptiPhoenix"].map((tag) => (
               <div
                 key={tag}
                 style={{

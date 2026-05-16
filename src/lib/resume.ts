@@ -3,7 +3,7 @@ export const resume = {
   headline: "Senior Frontend Engineer",
   availability: "Open to Remote and Relocation",
   summary:
-    "Senior Frontend Engineer with 4+ years shipping production web UIs in React, Next.js, and TypeScript. Deep CRO and A/B testing experience (ABTasty, Optimizely, Convert, VWO) for Accor, Microsoft, Xbox, and Norwegian Airlines. Leads a team of 6 engineers and 4 QA; owns delivery, client calls, and AI-assisted dev workflows.",
+    "Senior Frontend Engineer with 4+ years shipping production web UIs in React, Next.js, and TypeScript. Works in the CRO industry — builds A/B test variants on ABTasty, Optimizely, Convert, and VWO for Accor, Microsoft, Xbox, and Norwegian Airlines. Leads a team of 6 engineers and 4 QA; owns delivery, client calls, and AI-assisted dev workflows.",
 };
 
 export const resumeContact = [
@@ -30,8 +30,8 @@ export const resumeSkills: { label: string; items: string[] }[] = [
     ],
   },
   {
-    label: "CRO and A/B Testing",
-    items: ["ABTasty", "Optimizely", "Convert", "VWO", "Google Analytics", "Experiment Design"],
+    label: "A/B Testing Platforms",
+    items: ["ABTasty", "Optimizely", "Convert", "VWO", "Google Analytics", "Experiment Implementation"],
   },
   {
     label: "Backend and Tools",
@@ -71,8 +71,8 @@ export const resumeExperience = [
     location: "New Delhi, India",
     period: "Jan 2025 – Present",
     bullets: [
-      "Lead a team of engineers and QA on CRO and frontend delivery.",
-      "Built company-wide CRO data pipeline across ABTasty, Optimizely, Convert, and VWO.",
+      "Lead engineers and QA on frontend delivery for a CRO agency.",
+      "Built tooling to aggregate A/B results across ABTasty, Optimizely, Convert, and VWO.",
       "Rolled out AI-assisted dev (Claude Code, Cursor) across the team.",
       "Assisted in Bringin out AI automated workflows across the team in Dev and QA"
     ],
@@ -130,7 +130,7 @@ export const resumeProjects = [
 ];
 
 export const resumeFreelanceSummary =
-  "Freelance frontend and CRO (2024–present): websites and SEO for Ontario clients via DeeGee Graphics; workshop admin for Tiger Tires; A/B builds for Blue Bagels (France).";
+  "Freelance frontend (2024–present): websites and SEO for Ontario clients via DeeGee Graphics; workshop admin for Tiger Tires; A/B builds for Blue Bagels (France).";
 
 export const resumeEducation = [
   {

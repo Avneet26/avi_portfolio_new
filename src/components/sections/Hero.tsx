@@ -211,8 +211,10 @@ export default function Hero() {
               <SocialLinks className="mt-4" variant="chips" />
             </div>
 
-            {/* Resume CTA — quick path to the formal one-pager */}
-            <HeroResumeCta className="hidden lg:flex w-full" />
+            {/* Resume CTA — desktop sidebar only (mobile uses copy above social links) */}
+            <div className="hidden lg:block">
+              <HeroResumeCta className="w-full" />
+            </div>
           </div>
         </div>
 

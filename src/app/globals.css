@@ -56,7 +56,11 @@
 @layer base {
   :root { color-scheme: light; }
 
-  html { scroll-padding-top: 96px; }
+  /* Framer Motion useScroll needs a non-static scroll ancestor */
+  html {
+    position: relative;
+    scroll-padding-top: 96px;
+  }
 
   html, body {
     background: var(--color-paper);

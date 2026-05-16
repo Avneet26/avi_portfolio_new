@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${body.variable} ${mono.variable}`}>
+    <html lang="en" className={`${body.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         {/* Flash-prevention: apply stored/preferred theme before first paint */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme')||((window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();` }} />

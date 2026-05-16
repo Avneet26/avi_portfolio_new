@@ -14,20 +14,20 @@ export const profile = {
     github: "https://github.com/Avneet26",
     linkedin: "https://www.linkedin.com/in/avneet-singh-virdi-652838185/",
   },
-  tagline: "CRO experiments across ABTasty, Optimizely, and VWO — shipped for Accor Hotels, Fairmont, Microsoft, Xbox, and Norwegian Airlines. Based in New Delhi.",
+  tagline: "Frontend engineer in the CRO industry — shipping A/B test builds on ABTasty, Optimizely, and VWO for Accor Hotels, Fairmont, Microsoft, Xbox, and Norwegian Airlines. Based in New Delhi.",
 } as const;
 
 export const about = {
   intro:
     "B.Tech in IT, self-taught the MERN stack, first job at BizData in PHP and MySQL. Since 2021: junior to senior at OptiPhoenix, a PG Diploma in Toronto, freelancing across Ontario, and now back in Delhi leading the frontend team.",
   expertise:
-    "Four years in CRO — experiment builds across ABTasty, Optimizely, Convert, and VWO. Shipped for Accor Hotels, Fairmont, Microsoft, Xbox, and Euronics. Also built an inventory system on PowerApps at RPS Composites in Canada.",
+    "Four years building frontends for a CRO agency — A/B variants on ABTasty, Optimizely, Convert, and VWO for Accor Hotels, Fairmont, Microsoft, Xbox, and Euronics. Also built an inventory system on PowerApps at RPS Composites in Canada.",
   agentic:
-    "Currently leading a team of 5 devs and 4 QA, owning client calls, and running the data pipeline for CRO experiments. Rolling out AI workflows and agentic coding practices across the team.",
+    "Currently leading a team of Devs and QA, owning client calls, and building the tooling that supports experiment delivery on the engineering side. Rolling out AI workflows and agentic coding practices across the team.",
   gamedev:
-    "Dev logs incoming — AI-native workflows, CRO experiment teardowns, and building in public. Dropping soon.",
+    "Dev logs incoming — AI-native workflows, A/B build teardowns, and building in public. Dropping soon.",
   personal:
-    "Gaming and music outside of work. Travel is on pause for now. The Weeknd in Toronto was a highlight. Trying to go to the gym every week, failing most weeks, but the intention is still there.",
+    "Gaming and music outside of work. Travel whenever I find time. The Weeknd in Toronto was a highlight. Trying to go to the gym every week, failing most weeks, but the intention is still there.",
 } as const;
 
 export const experience = [
@@ -75,8 +75,8 @@ export const experience = [
     year: "2025",
     location: "New Delhi · India",
     bullets: [
-      "Lead a cross-functional pod of 5–6 engineers and 3–4 QA — owning sprint planning, estimation, and client delivery.",
-      "Architected the CRO data pipeline aggregating multi-source A/B results into a queryable dataset used company-wide.",
+      "Lead a cross-functional pod of engineers and QA — owning sprint planning, estimation, and client delivery.",
+      "Built frontend and data tooling that aggregates multi-source A/B results into a queryable dataset used company-wide.",
       "Driving AI-assisted development — rolling out agentic workflows and custom Claude Code frameworks across the team.",
     ],
     stack: ["React", "TypeScript", "ABTasty", "Optimizely", "Claude Code"],
@@ -99,7 +99,7 @@ export const freelance: FreelanceItem[] = [
   { client: "Active Coachlines",   year: "2024", scope: "Website + SEO",              note: "DeeGee Graphics · Ontario GTA",      link: "https://activecoach.ca/" },
   { client: "DeeGee Graphics",     year: "2024", scope: "Agency Collaboration",       note: "Multi-client website + branding work · Ontario", link: "https://deegeegraphics.com/" },
   { client: "Blends & Bites",      year: "2024", scope: "Website + Branding",         note: "DeeGee Graphics · Restaurant",       link: "http://blendsandbites.com/" },
-  { client: "Blue Bagels",         year: "2024", scope: "CRO / Frontend",             note: "French CRO agency · A/B builds" },
+  { client: "Blue Bagels",         year: "2024", scope: "Frontend · A/B builds",      note: "French CRO agency · experiment variants" },
 ];
 
 export type LiveProject = {

@@ -14,7 +14,7 @@ const revealInView = {
 const topicPillars = [
   { k: "AI / Agentic", v: "Claude Code, prompt frameworks, real-world wins & sharp edges", accent: "cyan" as const },
   { k: "Game Dev", v: "Dev logs from a side build — engine choices, UI, scope creep", accent: "orange" as const },
-  { k: "Frontend / CRO", v: "Motion budgets, A/B teardowns, what production actually needs", accent: "ink" as const },
+  { k: "Frontend · A/B Builds", v: "Motion budgets, experiment teardowns, what production actually needs", accent: "ink" as const },
 ];
 
 const accentBarColor = {
@@ -77,7 +77,7 @@ export default function Blogs() {
           <p className="text-ink text-[16px] leading-[1.65]">
             Long-form posts on the things I&rsquo;m actually shipping —
             <span className="font-semibold text-ink"> AI-native and agentic coding workflows</span>,{" "}
-            <span className="font-semibold text-ink">CRO experiment teardowns</span>, and an ongoing{" "}
+            <span className="font-semibold text-ink">A/B build teardowns</span>, and an ongoing{" "}
             <span className="font-semibold text-ink">game dev / dev log</span> series as I build something on the side.
           </p>
           <p className="text-ink-soft text-[14.5px] leading-[1.65] mt-3">

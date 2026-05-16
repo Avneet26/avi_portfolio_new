@@ -17,8 +17,7 @@ type LandGeometry = PolygonGeometry | MultiPolygonGeometry;
 type LandFeature = { geometry: LandGeometry };
 type LandFeatureCollection = { features: LandFeature[] };
 
-const LAND_DATA_URL =
-  "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json";
+const LAND_DATA_URL = "/geo/ne_110m_land.json";
 const DOT_STEP = 1.4;
 
 export default function DottedGlobe({

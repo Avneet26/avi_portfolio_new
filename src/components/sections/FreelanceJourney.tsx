@@ -114,7 +114,7 @@ export default function FreelanceJourney() {
           <div>
             <div className="font-mono text-[11.5px] uppercase tracking-[0.15em] text-ink-soft font-semibold mb-1">// Curious about the process?</div>
             <p className="text-ink text-[14.5px] leading-[1.5]">
-              Happy to talk shop — CRO, web builds, or how any of this came together.
+              Happy to talk shop — frontend builds, A/B experiments, or how any of this came together.
             </p>
           </div>
           <a

@@ -19,13 +19,20 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
+function readTheme(): Theme {
+  if (typeof document === "undefined") return "light";
+  const onDoc = document.documentElement.getAttribute("data-theme");
+  if (onDoc === "light" || onDoc === "dark") return onDoc;
+  const stored = localStorage.getItem("theme");
+  if (stored === "light" || stored === "dark") return stored;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
-    const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initial = stored ?? preferred;
+    const initial = readTheme();
     setTheme(initial);
     document.documentElement.setAttribute("data-theme", initial);
   }, []);

@@ -227,7 +227,7 @@ export default function About() {
                 {[
                   { label: "UI Development", sub: "Pixel-precise, production-grade interfaces", accent: "cyan" },
                   { label: "A/B Testing", sub: "End-to-end experiment build & instrumentation", accent: "cyan" },
-                  { label: "Team Leadership", sub: "5–6 devs, 3–4 QA — timelines, clients, the works", accent: "orange" },
+                  { label: "Team Leadership", sub: "Developers, QA Engineers — timelines, clients, the works", accent: "orange" },
                   { label: "Agentic Coding", sub: "Prompt frameworks, Claude Code, AI-native workflows", accent: "orange" },
                 ].map((spec) => (
                   <div key={spec.label} className="flex items-start gap-3">
