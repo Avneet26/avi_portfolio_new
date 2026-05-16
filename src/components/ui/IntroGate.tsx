@@ -12,15 +12,13 @@ const REDUCED_MS = 240;
 export default function IntroGate() {
   const [stage, setStage] = useState<Stage>("boot");
   const leftGateRef = useRef<HTMLDivElement | null>(null);
+  const previousOverflowRef = useRef<string | null>(null);
 
   // Stage 1 — schedule the gate-open from "boot"
   useEffect(() => {
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
 
     const tOpen = window.setTimeout(
       () => setStage("opening"),
@@ -29,7 +27,28 @@ export default function IntroGate() {
 
     return () => {
       window.clearTimeout(tOpen);
-      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
+  // Lock scrolling while splash is visible, and always restore previous style.
+  useEffect(() => {
+    if (previousOverflowRef.current === null) {
+      previousOverflowRef.current = document.body.style.overflow;
+    }
+
+    if (stage === "done") {
+      document.body.style.overflow = previousOverflowRef.current;
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+  }, [stage]);
+
+  useEffect(() => {
+    return () => {
+      if (previousOverflowRef.current !== null) {
+        document.body.style.overflow = previousOverflowRef.current;
+      }
     };
   }, []);
 
