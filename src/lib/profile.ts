@@ -111,11 +111,23 @@ export type LiveProject = {
   stack: string[];
   github?: string;
   link?: string;
+  openSource?: boolean;
 };
 
 export const liveProjects: LiveProject[] = [
   {
     code: "LIVE-01",
+    title: "Local Ollama Frontend",
+    tagline: "Simple ChatGPT-style UI for Ollama — private, local, open source",
+    description:
+      "An easy-to-use local frontend for Ollama. Chats stay in your browser; nothing hits the cloud. Built with QoL in mind — keyboard shortcuts, model picker, thinking mode, desktop launchers — plus optional web search via DuckDuckGo when the model needs current info. Fully open source; contributions welcome.",
+    cover: "/assets/privategpt.png",
+    stack: ["React", "Vite", "TypeScript", "Tailwind", "Ollama"],
+    github: "https://github.com/Avneet26/my-private-gpt",
+    openSource: true,
+  },
+  {
+    code: "LIVE-02",
     title: "LooperVid",
     tagline: "Turn GIFs into YouTube-ready looping videos with audio",
     description:
@@ -126,7 +138,7 @@ export const liveProjects: LiveProject[] = [
     link: "https://www.loopervid.com/",
   },
   {
-    code: "LIVE-02",
+    code: "LIVE-03",
     title: "Slowed & Reverb Maker",
     tagline: "One-click slowed + reverb / nightcore audio in the browser",
     description:

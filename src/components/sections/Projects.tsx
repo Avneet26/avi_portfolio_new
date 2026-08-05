@@ -155,19 +155,28 @@ function LiveProjectCard({ project, index }: { project: LiveProject; index: numb
           <div className="absolute top-3 left-3 font-mono text-[11px] uppercase tracking-[0.12em] bg-paper px-2 py-1 border-2 border-ink font-semibold">
             {project.code}
           </div>
-          {/* Live status */}
-          <div className="absolute top-3 right-3 font-mono text-[11px] uppercase tracking-[0.12em] bg-paper px-2.5 py-1 border-2 border-ink font-semibold flex items-center gap-2">
-            <span className="relative inline-flex h-2 w-2">
-              <span
-                className="absolute inline-flex h-full w-full animate-ping rounded-full"
-                style={{ background: "#3ecf8e", opacity: 0.7 }}
-              />
-              <span
-                className="relative inline-flex h-2 w-2 rounded-full"
-                style={{ background: "#3ecf8e" }}
-              />
-            </span>
-            Live
+          {/* Status badges */}
+          <div className="absolute top-3 right-3 flex items-center gap-2">
+            {project.openSource && (
+              <div className="font-mono text-[11px] uppercase tracking-[0.12em] bg-paper px-2.5 py-1 border-2 border-ink font-semibold">
+                Open Source
+              </div>
+            )}
+            {(project.link || !project.openSource) && (
+              <div className="font-mono text-[11px] uppercase tracking-[0.12em] bg-paper px-2.5 py-1 border-2 border-ink font-semibold flex items-center gap-2">
+                <span className="relative inline-flex h-2 w-2">
+                  <span
+                    className="absolute inline-flex h-full w-full animate-ping rounded-full"
+                    style={{ background: "#3ecf8e", opacity: 0.7 }}
+                  />
+                  <span
+                    className="relative inline-flex h-2 w-2 rounded-full"
+                    style={{ background: "#3ecf8e" }}
+                  />
+                </span>
+                Live
+              </div>
+            )}
           </div>
         </div>
 
