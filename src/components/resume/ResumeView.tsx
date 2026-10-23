@@ -1,59 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useRef, useState } from "react";
 import {
+  RESUME_DOWNLOAD_URL,
   resume,
   resumeContact,
   resumeExperience,
   resumeProjects,
   resumeSkills,
   resumeEducation,
-  resumeFreelanceSummary,
 } from "@/lib/resume";
 
-const PDF_FILENAME = "Avneet_Singh_Virdi_Resume.pdf";
-
 export default function ResumeView() {
-  const sheetRef = useRef<HTMLElement>(null);
-  const [exporting, setExporting] = useState(false);
-
-  const handleDownloadPdf = useCallback(async () => {
-    const node = sheetRef.current;
-    if (!node || exporting) return;
-
-    setExporting(true);
-    try {
-      const html2pdf = (await import("html2pdf.js")).default;
-      await html2pdf()
-        .set({
-          margin: [8, 8, 8, 8],
-          filename: PDF_FILENAME,
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: "#ffffff",
-            logging: false,
-            letterRendering: true,
-            /* Render at A4 pixel width regardless of actual viewport size.
-               scrollX/scrollY compensate for current page scroll so the
-               capture region aligns with the element's bounding rect. */
-            windowWidth: 794,
-            scrollX: 0,
-            scrollY: -window.scrollY,
-          },
-          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        })
-        .from(node)
-        .save();
-    } catch {
-      window.print();
-    } finally {
-      setExporting(false);
-    }
-  }, [exporting]);
-
   return (
     <div className="resume-shell">
       {/* Screen-only toolbar */}
@@ -66,21 +24,21 @@ export default function ResumeView() {
             <span className="resume-toolbar-meta">
               <span className="dot" /> Single page · A4 · Updated 2026
             </span>
-            <button
-              type="button"
-              onClick={handleDownloadPdf}
-              disabled={exporting}
+            <a
+              href={RESUME_DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="resume-download"
             >
               <DownloadGlyph />
-              {exporting ? "Generating PDF…" : "Download PDF"}
-            </button>
+              Download PDF
+            </a>
           </div>
         </div>
       </div>
 
       <div className="resume-sheet-wrap">
-      <article ref={sheetRef} className="resume-sheet" aria-label="Resume">
+      <article className="resume-sheet" aria-label="Resume">
         <header className="r-head">
           <h1 className="r-name">{resume.name}</h1>
           <p className="r-headline">{resume.headline}</p>
@@ -127,12 +85,16 @@ export default function ResumeView() {
           <SectionHead title="Professional Experience" />
           {resumeExperience.map((job, i) => (
             <div key={`${job.company}-${i}`} className="r-job">
-              <h3 className="r-job-title">
-                {job.title} — {job.company}
-              </h3>
-              <p className="r-job-meta">
-                {job.location} <span className="sep">·</span> {job.period}
-              </p>
+              <div className="r-job-head">
+                <h3 className="r-job-title">
+                  {job.title}
+                  <span className="r-job-company">
+                    , {job.company}
+                    {job.location ? `, ${job.location}` : ""}
+                  </span>
+                </h3>
+                <span className="r-job-period">{job.period}</span>
+              </div>
               <ul className="r-bullets">
                 {job.bullets.map((b, j) => (
                   <li key={j}>{b}</li>
@@ -143,23 +105,27 @@ export default function ResumeView() {
         </section>
 
         <section className="r-section">
-          <SectionHead title="Projects and Freelance" />
-          <ul className="r-compact-list">
-            {resumeProjects.map((p, i) => (
-              <li key={i}>
-                <strong>{p.title}</strong>
-                {p.link ? (
-                  <>
-                    {" "}
-                    (<a href={p.link}>{stripScheme(p.link)}</a>)
-                  </>
-                ) : null}
-                {" — "}
-                {p.description} <em>{p.stack.join(", ")}</em>
-              </li>
-            ))}
-          </ul>
-          <p className="r-freelance">{resumeFreelanceSummary}</p>
+          <SectionHead title="Projects" />
+          {resumeProjects.map((p, i) => (
+            <div key={i} className="r-job">
+              <h3 className="r-job-title r-project-title">
+                {p.title} <span className="r-job-stack">({p.stack.join(", ")})</span>
+              </h3>
+              <ul className="r-bullets">
+                <li>
+                  <span>
+                    {p.description} (<a href={p.link}>{stripScheme(p.link)}</a>
+                    {"secondaryLink" in p && p.secondaryLink ? (
+                      <>
+                        , <a href={p.secondaryLink}>{stripScheme(p.secondaryLink)}</a>
+                      </>
+                    ) : null}
+                    )
+                  </span>
+                </li>
+              </ul>
+            </div>
+          ))}
         </section>
 
         <section className="r-section r-section-last">
