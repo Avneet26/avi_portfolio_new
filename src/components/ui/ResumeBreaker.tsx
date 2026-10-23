@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { RESUME_DOWNLOAD_URL } from "@/lib/resume";
 
 type Variant = "orange" | "cyan";
 
@@ -85,8 +86,10 @@ export default function ResumeBreaker({
             >
               View Resume <span aria-hidden>→</span>
             </Link>
-            <Link
-              href="/resume"
+            <a
+              href={RESUME_DOWNLOAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rbk-btn rbk-btn-primary"
               style={{
                 ...baseBtnStyle,
@@ -95,7 +98,7 @@ export default function ResumeBreaker({
               }}
             >
               <DownloadGlyph /> Download · PDF
-            </Link>
+            </a>
           </div>
         </div>
       </div>

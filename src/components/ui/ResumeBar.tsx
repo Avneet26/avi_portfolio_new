@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { RESUME_DOWNLOAD_URL } from "@/lib/resume";
 import "./resume-bar.css";
 
 const STORAGE_KEY = "asv:resume-bar-dismissed";
@@ -75,8 +76,10 @@ export default function ResumeBar() {
                 View
               </a>
               <a
-                href="/resume"
+                href={RESUME_DOWNLOAD_URL}
                 className="rb-btn rb-btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <DownloadGlyph />
                 Download Resume · PDF
